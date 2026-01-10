@@ -7,6 +7,7 @@
   @param {object} children - The children of the product card
   @param {object} [block] - The block object
   @param {number} [product_card_gap] - The gap between the product card children (overrides block settings)
+  @param {string} [actions] - The action buttons HTML to render at the bottom of the card
 {%- enddoc -%}
 
 {% assign block_settings = block.settings %}
@@ -112,6 +113,9 @@
     "
   >
     {{ children }}
+    {% if actions != blank %}
+      {{ actions }}
+    {% endif %}
   </div>
 </product-card>
 {%- if settings.transition_to_main_product -%}

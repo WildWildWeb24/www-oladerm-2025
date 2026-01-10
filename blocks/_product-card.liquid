@@ -8,7 +8,13 @@
   {% content_for 'blocks', closest.product: product %}
 {% endcapture %}
 
-{% render 'product-card', children: children, product: product %}
+{% capture product_card_actions %}
+  {% unless product == blank %}
+    {% render 'product-card-actions', product: product, section_id: section.id %}
+  {% endunless %}
+{% endcapture %}
+
+{% render 'product-card', children: children, product: product, block: block, actions: product_card_actions %}
 
 {% schema %}
 {
@@ -43,6 +49,9 @@
     },
     {
       "type": "product-title"
+    },
+    {
+      "type": "product-mini-description"
     },
     {
       "type": "custom-liquid"

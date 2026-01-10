@@ -12,6 +12,63 @@
       >
     {%- endif -%}
 
+    {% comment %} Load Instrument Sans from Google Fonts for H1-H4 headings {% endcomment %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet" id="instrument-sans-font">
+    
+    <script>
+      // #region agent log
+      (function() {
+        const logData = {
+          location: 'theme.liquid:font-link',
+          message: 'Font link element check',
+          data: {},
+          timestamp: Date.now(),
+          sessionId: 'debug-session',
+          runId: 'run1'
+        };
+        
+        // Check if font link exists and is loaded
+        const fontLink = document.getElementById('instrument-sans-font');
+        if (fontLink) {
+          logData.data.fontLinkExists = true;
+          logData.data.fontLinkHref = fontLink.href;
+          logData.hypothesisId = 'B';
+          
+          fontLink.addEventListener('load', function() {
+            logData.message = 'Font stylesheet loaded successfully';
+            logData.data.loaded = true;
+            fetch('http://127.0.0.1:7245/ingest/9f350e9f-8de6-46a4-8ecd-aec497f0aaf4', {
+              method: 'POST',
+              headers: {'Content-Type': 'application/json'},
+              body: JSON.stringify(logData)
+            }).catch(() => {});
+          });
+          
+          fontLink.addEventListener('error', function() {
+            logData.message = 'Font stylesheet failed to load';
+            logData.data.loaded = false;
+            logData.data.error = true;
+            fetch('http://127.0.0.1:7245/ingest/9f350e9f-8de6-46a4-8ecd-aec497f0aaf4', {
+              method: 'POST',
+              headers: {'Content-Type': 'application/json'},
+              body: JSON.stringify(logData)
+            }).catch(() => {});
+          });
+        } else {
+          logData.data.fontLinkExists = false;
+          logData.hypothesisId = 'B';
+          fetch('http://127.0.0.1:7245/ingest/9f350e9f-8de6-46a4-8ecd-aec497f0aaf4', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(logData)
+          }).catch(() => {});
+        }
+      })();
+      // #endregion
+    </script>
+
     {% comment %} This a way to wait for main content to load when navigating to a new page so that the view transitions can work consistently {% endcomment %}
     <link
       rel="expect"
@@ -27,6 +84,54 @@
     {%- render 'theme-styles-variables' -%}
     {%- render 'color-schemes' -%}
 
+    {% comment %} Override heading font CSS variables to use Instrument Serif - must come after theme-styles-variables {% endcomment %}
+    <style>
+      :root {
+        --font-heading--family: "Instrument Serif", sans-serif;
+        --font-h1--family: "Instrument Serif", sans-serif;
+        --font-h2--family: "Instrument Serif", sans-serif;
+        --font-h3--family: "Instrument Serif", sans-serif;
+        --font-h4--family: "Instrument Serif", sans-serif;
+      }
+    </style>
+    
+    <script>
+      // #region agent log
+      (function() {
+        const logData = {
+          location: 'theme.liquid:css-vars-check',
+          message: 'CSS variable values check',
+          data: {},
+          timestamp: Date.now(),
+          sessionId: 'debug-session',
+          runId: 'run1',
+          hypothesisId: 'E'
+        };
+        
+        function checkCSSVars() {
+          const rootStyles = window.getComputedStyle(document.documentElement);
+          logData.data.fontHeadingFamily = rootStyles.getPropertyValue('--font-heading--family').trim();
+          logData.data.fontH1Family = rootStyles.getPropertyValue('--font-h1--family').trim();
+          logData.data.fontH2Family = rootStyles.getPropertyValue('--font-h2--family').trim();
+          logData.data.fontH3Family = rootStyles.getPropertyValue('--font-h3--family').trim();
+          logData.data.fontH4Family = rootStyles.getPropertyValue('--font-h4--family').trim();
+          
+          fetch('http://127.0.0.1:7245/ingest/9f350e9f-8de6-46a4-8ecd-aec497f0aaf4', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(logData)
+          }).catch(() => {});
+        }
+        
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', checkCSSVars);
+        } else {
+          checkCSSVars();
+        }
+      })();
+      // #endregion
+    </script>
+
     {% if request.design_mode %}
       {%- render 'theme-editor' -%}
     {% endif %}
@@ -41,6 +146,126 @@
     </div>
 
     <script>
+      // #region agent log
+      (function checkFontLoading() {
+        function logFontStatus() {
+          const logData = {
+            location: 'theme.liquid:font-check',
+            message: 'Font availability check',
+            data: {},
+            timestamp: Date.now(),
+            sessionId: 'debug-session',
+            runId: 'run2'
+          };
+          
+          // Check document.fonts API
+          if (document.fonts && document.fonts.check) {
+            // List ALL loaded fonts
+            const allFonts = [];
+            document.fonts.forEach(font => {
+              allFonts.push({
+                family: font.family,
+                weight: font.weight,
+                style: font.style,
+                status: font.status,
+                loaded: font.loaded
+              });
+            });
+            logData.data.allLoadedFonts = allFonts;
+            logData.hypothesisId = 'C';
+            
+            // Check for Instrument Sans specifically
+            const instrumentSansFonts = Array.from(document.fonts).filter(f => 
+              f.family.toLowerCase().includes('instrument')
+            );
+            logData.data.instrumentSansFonts = instrumentSansFonts.map(f => ({
+              family: f.family,
+              weight: f.weight,
+              style: f.style,
+              status: f.status,
+              loaded: f.loaded
+            }));
+            
+            // Check @font-face rules in stylesheets
+            const fontFaceRules = [];
+            Array.from(document.styleSheets).forEach(sheet => {
+              try {
+                Array.from(sheet.cssRules || []).forEach(rule => {
+                  if (rule.type === CSSRule.FONT_FACE_RULE) {
+                    fontFaceRules.push({
+                      family: rule.style.fontFamily,
+                      src: rule.style.src,
+                      weight: rule.style.fontWeight,
+                      style: rule.style.fontStyle
+                    });
+                  }
+                });
+              } catch(e) {
+                // Cross-origin stylesheets can't be accessed
+              }
+            });
+            logData.data.fontFaceRules = fontFaceRules;
+            
+            // Try different font check syntaxes
+            const fontCheckResults = {};
+            const testNames = [
+              '400 "Instrument Sans"',
+              '"Instrument Sans"',
+              'Instrument Sans',
+              '12px "Instrument Sans"',
+              'normal 400 "Instrument Sans"'
+            ];
+            testNames.forEach(testName => {
+              try {
+                fontCheckResults[testName] = document.fonts.check(testName);
+              } catch(e) {
+                fontCheckResults[testName + '_error'] = e.message;
+              }
+            });
+            logData.data.fontCheckResults = fontCheckResults;
+            
+            // Check computed styles on a heading
+            const testHeading = document.querySelector('h1, h2, h3, h4, .h1, .h2, .h3, .h4');
+            if (testHeading) {
+              const computedStyle = window.getComputedStyle(testHeading);
+              logData.data.computedFontFamily = computedStyle.fontFamily;
+              logData.data.computedFontWeight = computedStyle.fontWeight;
+              logData.data.computedFontStyle = computedStyle.fontStyle;
+              
+              // Check what font the browser actually uses
+              const range = document.createRange();
+              range.selectNodeContents(testHeading);
+              const rect = range.getBoundingClientRect();
+              logData.data.headingText = testHeading.textContent.substring(0, 20);
+              logData.hypothesisId = 'D';
+            }
+            
+            fetch('http://127.0.0.1:7245/ingest/9f350e9f-8de6-46a4-8ecd-aec497f0aaf4', {
+              method: 'POST',
+              headers: {'Content-Type': 'application/json'},
+              body: JSON.stringify(logData)
+            }).catch(() => {});
+          }
+        }
+        
+        // Wait for fonts to load, then check
+        if (document.fonts && document.fonts.ready) {
+          document.fonts.ready.then(() => {
+            setTimeout(logFontStatus, 500);
+          });
+        }
+        
+        // Also check after DOM loads
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(logFontStatus, 1000);
+          });
+        } else {
+          setTimeout(logFontStatus, 1000);
+        }
+      })();
+      // #endregion
+      
       // Inline header height calculation to prevent layout shift
       // Note: Updates in calculateHeaderGroupHeight() and updateTransparentHeaderOffset()utilities.js should be kept in sync with this function
       (function setHeaderHeighCustomProperties() {

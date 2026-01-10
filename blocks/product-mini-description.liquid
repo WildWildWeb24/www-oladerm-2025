@@ -1,0 +1,160 @@
+{%- doc -%}
+  Renders a mini description for the product card pulled from product metafield.
+
+  @example
+  {% content_for 'block', type: 'product-mini-description', id: 'product-mini-desc' %}
+{%- enddoc -%}
+
+{% liquid
+  assign product = closest.product
+  assign block_settings = block.settings
+  assign metafield_namespace = block_settings.metafield_namespace | default: 'custom'
+  assign metafield_key = block_settings.metafield_key | default: 'mini_description'
+  
+  if product == blank
+    assign mini_description = blank
+  else
+    # Try to get mini description from metafield
+    # For custom namespace, use direct access
+    if metafield_namespace == 'custom'
+      if metafield_key == 'mini_description'
+        assign mini_description = product.metafields.custom.mini_description.value
+      else
+        # For other keys in custom namespace, try direct access
+        case metafield_key
+          when 'short_description'
+            assign mini_description = product.metafields.custom.short_description.value
+          when 'tagline'
+            assign mini_description = product.metafields.custom.tagline.value
+          else
+            # Try generic access
+            assign mini_description = product.metafields.custom[metafield_key].value
+        endcase
+      endif
+    else
+      # For other namespaces, try to access via bracket notation
+      assign namespace_obj = product.metafields[metafield_namespace]
+      if namespace_obj
+        assign mini_description = namespace_obj[metafield_key].value
+      endif
+    endif
+    
+    # Fallback to product description excerpt if metafield is empty
+    if mini_description == blank or mini_description == empty or mini_description == null
+      assign mini_description = product.description | strip_html | truncate: 100
+    endif
+  endif
+-%}
+
+{% liquid
+  assign block_settings = block.settings
+  assign font_size = block_settings.font_size | default: 0.9
+  assign text_color = block_settings.text_color | default: "rgb(var(--color-foreground-rgb) / 0.7)"
+-%}
+
+{% if mini_description != blank and mini_description != empty %}
+  <div 
+    class="product-mini-description product-mini-description--{{ block.id }}" 
+    {{ block.shopify_attributes }}
+    style="
+      --mini-description-font-size: {{ font_size }}rem;
+      --mini-description-color: {{ text_color }};
+    "
+  >
+    <p class="product-mini-description__text">
+      {{ mini_description }}
+    </p>
+  </div>
+{% endif %}
+
+{% stylesheet %}
+  .product-mini-description {
+    margin-top: 4px;
+    margin-bottom: 0;
+  }
+
+  .product-mini-description__text {
+    font-size: var(--mini-description-font-size, 0.9rem);
+    line-height: 1.5;
+    color: var(--mini-description-color, rgb(var(--color-foreground-rgb) / 0.7));
+    margin: 0;
+    font-weight: 400;
+  }
+
+  @media screen and (min-width: 750px) {
+    .product-mini-description__text {
+      font-size: calc(var(--mini-description-font-size, 0.9rem) * 1.1);
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Mini Description",
+  "tag": null,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "This block displays a mini description from a product metafield. Configure the metafield namespace and key below, or use the default custom.mini_description. If the metafield is empty, it will show a truncated version of the product description."
+    },
+    {
+      "type": "header",
+      "content": "Metafield Settings"
+    },
+    {
+      "type": "text",
+      "id": "metafield_namespace",
+      "label": "Metafield Namespace",
+      "default": "custom",
+      "info": "The namespace of the metafield (e.g., 'custom')"
+    },
+    {
+      "type": "text",
+      "id": "metafield_key",
+      "label": "Metafield Key",
+      "default": "mini_description",
+      "info": "The key of the metafield (e.g., 'mini_description')"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "label": "Font Size",
+      "min": 0.8,
+      "max": 1.2,
+      "step": 0.1,
+      "unit": "rem",
+      "default": 0.9
+    },
+    {
+      "type": "select",
+      "id": "text_color",
+      "label": "Text Color",
+      "options": [
+        {
+          "value": "var(--color-foreground)",
+          "label": "Default"
+        },
+        {
+          "value": "rgb(var(--color-foreground-rgb) / 0.7)",
+          "label": "Muted"
+        },
+        {
+          "value": "rgb(var(--color-foreground-rgb) / 0.5)",
+          "label": "Light"
+        }
+      ],
+      "default": "rgb(var(--color-foreground-rgb) / 0.7)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mini Description",
+      "category": "Product"
+    }
+  ]
+}
+{% endschema %}

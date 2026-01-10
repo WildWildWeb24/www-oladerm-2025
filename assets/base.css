@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&family=Lilita+One&family=Special+Gothic:wght@400..700&display=swap');
+
 * {
   box-sizing: border-box;
 }
@@ -21,6 +23,13 @@ body {
   --hover-transition-timing: ease-out;
   --surface-transition-duration: 0.3s;
   --surface-transition-timing: var(--ease-out-quad);
+
+  /* Override heading font CSS variables to use Instrument Serif */
+  --font-heading--family: "Instrument Serif", sans-serif;
+  --font-h1--family: "Instrument Serif", sans-serif;
+  --font-h2--family: "Instrument Serif", sans-serif;
+  --font-h3--family: "Instrument Serif", sans-serif;
+  --font-h4--family: "Instrument Serif", sans-serif;
 }
 
 html {
@@ -840,6 +849,31 @@ h4,
   }
 }
 
+/* Global Typography: Apply Instrument Serif to all H1-H4 headings */
+h1,
+.h1.h1,
+.text-block.h1 > *,
+h2,
+.h2.h2,
+.text-block.h2 > *,
+h3,
+.h3,
+.h3.h3,
+.text-block.h3 > *,
+h4,
+.h4.h4,
+.text-block.h4 > *,
+/* Section-specific heading classes */
+.home-brand-story__headline,
+.hero-grid__heading,
+.home-concern__heading h2,
+.rte h1,
+.rte h2,
+.rte h3,
+.rte h4 {
+  font-family: "Instrument Serif", sans-serif !important;
+}
+
 h5,
 .h5.h5,
 .text-block.h5 > * {
@@ -1349,30 +1383,30 @@ input:not(:placeholder-shown)::placeholder {
 
 .button,
 button.shopify-payment-button__button--unbranded {
-  --button-color: var(--color-primary-button-text);
-  --button-background-color: var(--color-primary-button-background);
-  --button-border-color: var(--color-primary-button-border);
+  --button-color: #FFFFFF;
+  --button-background-color: #A9764D;
+  --button-border-color: #A9764D;
   --button-border-width: var(--style-border-width-primary);
 }
 
 .button:hover,
 button.shopify-payment-button__button--unbranded:hover:not([disabled]) {
-  --button-color: var(--color-primary-button-hover-text);
-  --button-background-color: var(--color-primary-button-hover-background);
-  --button-border-color: var(--color-primary-button-hover-border);
+  --button-color: #FFFFFF;
+  --button-background-color: #A9764D;
+  --button-border-color: #A9764D;
 }
 
 .button-secondary {
-  --button-color: var(--color-secondary-button-text);
-  --button-background-color: var(--color-secondary-button-background);
-  --button-border-color: var(--color-secondary-button-border);
-  --button-border-width: var(--style-border-width-secondary);
+  --button-color: #A9764D;
+  --button-background-color: #FFFFFF;
+  --button-border-color: #A9764D;
+  --button-border-width: 1px;
 }
 
 .button-secondary:hover {
-  --button-color: var(--color-secondary-button-hover-text);
-  --button-background-color: var(--color-secondary-button-hover-background);
-  --button-border-color: var(--color-secondary-button-hover-border);
+  --button-color: #A9764D;
+  --button-background-color: #FFFFFF;
+  --button-border-color: #A9764D;
 }
 
 /* Needed to override the default Shopify styles */
@@ -1442,6 +1476,16 @@ button.shopify-payment-button__button--unbranded:hover:not([disabled]) {
 .link {
   display: inline-block;
   text-align: center;
+  color: #A9764D;
+  background-color: transparent;
+  border: none;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: #A9764D;
+  text-decoration: none;
 }
 
 shopify-accelerated-checkout,
@@ -2266,6 +2310,18 @@ product-price.text-block:is(.h1, .h2, .h3, .h4, .h5, .h6) > *:not(.tax-note) {
   p {
     line-height: var(--line-height--body, var(--line-height));
   }
+}
+
+/* Override font-family for H1-H4 in custom typography blocks to use Instrument Serif */
+.custom-typography h1,
+.custom-typography h2,
+.custom-typography h3,
+.custom-typography h4,
+.custom-typography .h1,
+.custom-typography .h2,
+.custom-typography .h3,
+.custom-typography .h4 {
+  font-family: "Instrument Serif", sans-serif !important;
 }
 
 .custom-font-size,

@@ -1,90 +1,53 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */{
+{
   "sections": {
-    "hero_jVaWmY": {
-      "type": "hero",
+    "hero_grid": {
+      "type": "home-hero-grid",
       "blocks": {
-        "text_YLPk4p": {
-          "type": "text",
-          "name": "t:names.heading",
+        "tile_1": {
+          "type": "tile",
           "settings": {
-            "text": "<p>Browse our latest products</p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "h2",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground-heading)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
+            "subheading": "Featured line",
+            "heading": "Sunscreen",
+            "body": "Protects your skin daily",
+            "background_color": "#f5c174"
+          }
         },
-        "button_H9gpTf": {
-          "type": "button",
-          "name": "t:names.button",
+        "tile_2": {
+          "type": "tile",
           "settings": {
-            "label": "Shop all",
-            "link": "shopify://collections/all",
-            "open_in_new_tab": false,
-            "style_class": "button-secondary",
-            "width": "fit-content",
-            "custom_width": 100,
-            "width_mobile": "fit-content",
-            "custom_width_mobile": 100
-          },
-          "blocks": {}
+            "subheading": "Velvet Skin",
+            "heading": "Balm",
+            "body": "Breathable balm that heals",
+            "background_color": "#d87e8f"
+          }
+        },
+        "tile_3": {
+          "type": "tile",
+          "settings": {
+            "subheading": "SatinSkin",
+            "heading": "Cleanser",
+            "body": "Gentle cleanser that respects your skin",
+            "background_color": "#6b8bcf"
+          }
+        },
+        "tile_4": {
+          "type": "tile",
+          "settings": {
+            "subheading": "Glowrevive",
+            "heading": "Cream",
+            "body": "Radiance-supporting cream for everyday",
+            "background_color": "#5b4c5f"
+          }
         }
       },
-      "block_order": [
-        "text_YLPk4p",
-        "button_H9gpTf"
-      ],
-      "name": "t:names.hero",
+      "block_order": ["tile_1", "tile_2", "tile_3", "tile_4"],
       "settings": {
-        "media_type_1": "image",
-        "media_type_2": "image",
-        "open_in_new_tab": false,
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "space-between",
-        "vertical_alignment": "flex-end",
-        "align_baseline": true,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "flex-end",
-        "gap": 24,
-        "section_width": "page-width",
-        "section_height": "medium",
-        "section_height_custom": 50,
-        "color_scheme": "scheme-6",
-        "toggle_overlay": true,
-        "overlay_color": "#12121266",
-        "overlay_style": "solid",
-        "gradient_direction": "to bottom",
-        "blurred_reflection": false,
-        "reflection_opacity": 75,
-        "padding-block-start": 100,
-        "padding-block-end": 72
+        "color_scheme": "scheme-1",
+        "padding-block-start": 32,
+        "padding-block-end": 32
       }
     },
-    "product_list_fa6P9H": {
+    "shop_range": {
       "type": "product-list",
       "blocks": {
         "static-header": {
@@ -121,15 +84,15 @@
             "padding-inline-end": 0
           },
           "blocks": {
-            "product_list_text_YFtzcL": {
+            "product_list_text": {
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
-                "text": "<h3>{{ closest.collection.title }}</h3>",
+                "text": "<h3>Shop our range of skincare products</h3>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
-                "type_preset": "h4",
+                "type_preset": "h3",
                 "font": "var(--font-body--family)",
                 "font_size": "",
                 "line_height": "normal",
@@ -147,7 +110,7 @@
               },
               "blocks": {}
             },
-            "product_list_button_MWeP9V": {
+            "product_list_button": {
               "type": "_product-list-button",
               "name": "t:names.product_list_button",
               "settings": {
@@ -162,10 +125,7 @@
               "blocks": {}
             }
           },
-          "block_order": [
-            "product_list_text_YFtzcL",
-            "product_list_button_MWeP9V"
-          ]
+          "block_order": ["product_list_text", "product_list_button"]
         },
         "static-product-card": {
           "type": "_product-card",
@@ -185,7 +145,7 @@
             "padding-inline-end": 0
           },
           "blocks": {
-            "product_card_gallery_677WP3": {
+            "product_card_gallery": {
               "type": "_product-card-gallery",
               "name": "t:names.product_card_media",
               "settings": {
@@ -201,7 +161,7 @@
               },
               "blocks": {}
             },
-            "product_title_YXxMTj": {
+            "product_title": {
               "type": "product-title",
               "name": "t:names.product_title",
               "settings": {
@@ -226,7 +186,7 @@
               },
               "blocks": {}
             },
-            "price_JQzVV4": {
+            "price": {
               "type": "price",
               "name": "t:names.product_price",
               "settings": {
@@ -250,14 +210,10 @@
               "blocks": {}
             }
           },
-          "block_order": [
-            "product_card_gallery_677WP3",
-            "product_title_YXxMTj",
-            "price_JQzVV4"
-          ]
+          "block_order": ["product_card_gallery", "product_title", "price"]
         }
       },
-      "name": "Featured collection",
+      "name": "Shop our range",
       "settings": {
         "collection": "all",
         "layout_type": "grid",
@@ -274,13 +230,118 @@
         "horizontal_alignment": "flex-start",
         "gap": 28,
         "color_scheme": "scheme-1",
+        "padding-block-start": 32,
+        "padding-block-end": 32
+      }
+    },
+    "brand_story": {
+      "type": "home-brand-story",
+      "settings": {
+        "kicker": "Oloderm is made to perform in real conditions.",
+        "heading": "Thoughtfully formulated with skin-first principles at its core.",
+        "body": "<p>Products are free from added fragrance and unnecessary chemicals, making them gentle enough for sensitive and reactive skin. Each formula is dermatologically tested, pH balanced, and designed to support the skin’s natural barrier.</p>",
+        "color_scheme": "scheme-3",
         "padding-block-start": 48,
         "padding-block-end": 48
+      }
+    },
+    "concern_row": {
+      "type": "home-concern-row",
+      "blocks": {
+        "concern1": {
+          "type": "concern",
+          "settings": {
+            "label": "Dry/Dehydrated Skin",
+            "description": "Hydrate and lock in moisture"
+          }
+        },
+        "concern2": {
+          "type": "concern",
+          "settings": {
+            "label": "Uneven Texture",
+            "description": "Smooth and refine gently"
+          }
+        },
+        "concern3": {
+          "type": "concern",
+          "settings": {
+            "label": "Dull, Tired Skin",
+            "description": "Boost radiance daily"
+          }
+        },
+        "concern4": {
+          "type": "concern",
+          "settings": {
+            "label": "Blemishes",
+            "description": "Clarify without stripping"
+          }
+        },
+        "concern5": {
+          "type": "concern",
+          "settings": {
+            "label": "Daily UV Exposure",
+            "description": "Protect and nourish"
+          }
+        }
+      },
+      "block_order": ["concern1", "concern2", "concern3", "concern4", "concern5"],
+      "settings": {
+        "heading": "Shop by concern",
+        "section_width": "page-width",
+        "color_scheme": "scheme-1",
+        "padding-block-start": 32,
+        "padding-block-end": 32
+      }
+    },
+    "featured_1": {
+      "type": "featured-product",
+      "settings": {
+        "product": "",
+        "layout": "media-left",
+        "color_scheme": "scheme-1",
+        "padding-block-start": 32,
+        "padding-block-end": 32
+      }
+    },
+    "featured_2": {
+      "type": "featured-product",
+      "settings": {
+        "product": "",
+        "layout": "media-left",
+        "color_scheme": "scheme-1",
+        "padding-block-start": 32,
+        "padding-block-end": 32
+      }
+    },
+    "featured_3": {
+      "type": "featured-product",
+      "settings": {
+        "product": "",
+        "layout": "media-left",
+        "color_scheme": "scheme-1",
+        "padding-block-start": 32,
+        "padding-block-end": 32
+      }
+    },
+    "featured_4": {
+      "type": "featured-product",
+      "settings": {
+        "product": "",
+        "layout": "media-left",
+        "color_scheme": "scheme-1",
+        "padding-block-start": 32,
+        "padding-block-end": 32
       }
     }
   },
   "order": [
-    "hero_jVaWmY",
-    "product_list_fa6P9H"
+    "hero_grid",
+    "shop_range",
+    "brand_story",
+    "concern_row",
+    "featured_1",
+    "featured_2",
+    "featured_3",
+    "featured_4"
   ]
 }

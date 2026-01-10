@@ -1,0 +1,217 @@
+{%- doc -%}
+  Renders action buttons for the product card: Shop Now and View Product.
+
+  @param {object} product - The product object.
+  @param {string} section_id - The section ID for the product form.
+  
+  @example
+  {% render 'product-card-actions', product: product, section_id: section.id %}
+{%- enddoc -%}
+
+{% liquid
+  if product == blank
+    assign show_actions = false
+  else
+    assign show_actions = true
+    assign variant = product.selected_or_first_available_variant
+    assign can_add_to_cart = variant.available
+    assign product_url = variant.url
+    unless product_url
+      assign product_url = product.url
+    endunless
+  endif
+-%}
+
+{% if show_actions %}
+  <div class="product-card-actions">
+    {%- if can_add_to_cart -%}
+      <div class="product-card-actions__button-wrapper">
+        {%- assign product_form_id = 'ProductCard-ProductForm-' | append: product.id | append: '-' | append: section_id -%}
+        <product-form-component
+          data-section-id="{{ section_id }}"
+          data-product-id="{{ product.id }}"
+          on:submit="/handleSubmit"
+          class="product-card-actions__form"
+        >
+          <div
+            class="visually-hidden"
+            aria-live="assertive"
+            role="status"
+            aria-atomic="true"
+            ref="liveRegion"
+          ></div>
+          {%- form 'product', product, id: product_form_id, novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+            <input
+              type="hidden"
+              name="id"
+              ref="variantId"
+              value="{{ variant.id }}"
+            >
+            <input
+              type="hidden"
+              name="quantity"
+              value="{% if variant.quantity_rule.min %}{{ variant.quantity_rule.min }}{% else %}1{% endif %}"
+            >
+            {% render 'add-to-cart-button',
+              add_to_cart_text: 'Shop Now',
+              class: 'product-card-actions__add-to-cart button',
+              can_add_to_cart: can_add_to_cart,
+              product: product,
+              icon_only_on_mobile: false
+            %}
+          {%- endform -%}
+        </product-form-component>
+      </div>
+    {%- else -%}
+      <div class="product-card-actions__button-wrapper">
+        <button
+          type="button"
+          class="product-card-actions__add-to-cart button"
+          disabled
+        >
+          <span class="add-to-cart-text">
+            <span class="add-to-cart-text__content">
+              <span>
+                <span>{{ 'products.product.sold_out' | t }}</span>
+              </span>
+            </span>
+          </span>
+        </button>
+      </div>
+    {%- endif -%}
+    <div class="product-card-actions__button-wrapper">
+      <a
+        href="{{ product_url }}"
+        class="product-card-actions__view-product link"
+      >
+        <span>View Product</span>
+      </a>
+    </div>
+  </div>
+{% endif %}
+
+{% stylesheet %}
+  .product-card-actions {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    margin-top: auto;
+    padding-top: 8px;
+  }
+
+  .product-card-actions__button-wrapper {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .product-card-actions__form {
+    width: 100%;
+    height: 100%;
+  }
+
+  .product-card-actions__add-to-cart {
+    width: 100%;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: var(--font-size--sm, 0.875rem);
+    font-weight: 600;
+    line-height: 1.4;
+    text-align: center;
+    transition: all var(--animation-speed, 0.2s) var(--ease-out-cubic, ease-out);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .product-card-actions__view-product {
+    width: 100%;
+    text-align: center;
+    padding: 12px 16px;
+    font-size: var(--font-size--sm, 0.875rem);
+    line-height: 1.4;
+    transition: all var(--animation-speed, 0.2s) var(--ease-out-cubic, ease-out);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .product-card-actions__view-product:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  .product-card-actions__add-to-cart:active {
+    scale: 0.98;
+  }
+
+  @media screen and (max-width: 749px) {
+    .product-card-actions {
+      gap: 8px;
+      flex-direction: row;
+    }
+
+    .product-card-actions__add-to-cart {
+      padding: 10px 12px;
+      font-size: var(--font-size--xs, 0.75rem);
+    }
+
+    .product-card-actions__view-product {
+      padding: 10px 12px;
+      font-size: var(--font-size--xs, 0.75rem);
+    }
+  }
+
+  @media screen and (min-width: 750px) {
+    .product-card-actions {
+      gap: 12px;
+    }
+
+    .product-card-actions__add-to-cart {
+      padding: 12px 16px;
+    }
+
+    .product-card-actions__view-product {
+      padding: 12px 16px;
+    }
+  }
+
+  /* Ensure buttons don't overflow on very small screens */
+  @media screen and (max-width: 374px) {
+    .product-card-actions {
+      flex-direction: column;
+    }
+
+    .product-card-actions__add-to-cart {
+      font-size: var(--font-size--xs, 0.6875rem);
+      padding: 8px 10px;
+    }
+
+    .product-card-actions__view-product {
+      font-size: var(--font-size--xs, 0.6875rem);
+      padding: 8px 10px;
+    }
+  }
+
+  /* Hide actions in zoom-out view to match existing behavior */
+  [product-grid-view='zoom-out'] .product-card-actions {
+    display: none;
+  }
+
+  /* Hide icons from CTAs */
+  .product-card-actions .add-to-cart-icon,
+  .product-card-actions .svg-wrapper.add-to-cart-icon,
+  .product-card-actions .add-to-cart__added,
+  .product-card-actions .add-to-cart__added-icon {
+    display: none !important;
+  }
+
+  .product-card-actions .add-to-cart-text {
+    gap: 0;
+    justify-content: center;
+  }
+
+  .product-card-actions .add-to-cart-text__content {
+    width: 100%;
+  }
+{% endstylesheet %}

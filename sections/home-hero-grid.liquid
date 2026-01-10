@@ -1,0 +1,480 @@
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+<div
+  class="section section--full-width hero-grid color-{{ section.settings.color_scheme }} spacing-style"
+  style="{% render 'spacing-style', settings: section.settings %}"
+>
+  <div class="hero-grid__inner" data-hero-grid>
+    {% for block in section.blocks %}
+      <div
+        class="hero-grid__tile"
+        style="
+          {% if block.settings.background_color != blank %}
+            --hero-grid-bg: {{ block.settings.background_color }};
+          {% endif %}
+          {% if block.settings.text_color != blank %}
+            --hero-grid-text: {{ block.settings.text_color }};
+          {% endif %}
+          {% if block.settings.image != blank %}
+            --hero-grid-aspect: {{ block.settings.image.aspect_ratio }};
+          {% endif %}
+        "
+        {{ block.shopify_attributes }}
+      >
+        {% if block.settings.image != blank %}
+          <div class="hero-grid__media">
+            {{ block.settings.image | image_url: width: 1200 | image_tag: loading: 'lazy' }}
+          </div>
+        {% endif %}
+
+        <div class="hero-grid__content">
+          {% if block.settings.subheading != blank %}
+            <p class="hero-grid__eyebrow">{{ block.settings.subheading }}</p>
+          {% endif %}
+          {% if block.settings.heading != blank %}
+            <h3 class="hero-grid__heading">{{ block.settings.heading }}</h3>
+          {% endif %}
+          {% if block.settings.body != blank %}
+            <p class="hero-grid__body">{{ block.settings.body }}</p>
+          {% endif %}
+          {% if block.settings.cta_label != blank and block.settings.cta_link != blank %}
+            <a
+              href="{{ block.settings.cta_link }}"
+              class="hero-grid__cta"
+              {% if block.settings.cta_new_tab %}
+                target="_blank" rel="noopener"
+              {% endif %}
+            >
+              {{ block.settings.cta_label }}
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <div class="hero-grid__dots" data-hero-grid-dots></div>
+</div>
+
+{% stylesheet %}
+  .hero-grid {
+    --hero-grid-gap: 0px;
+  }
+
+  .hero-grid__inner {
+    display: grid;
+    gap: var(--hero-grid-gap);
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+
+  .hero-grid__tile {
+    position: relative;
+    isolation: isolate;
+    background: var(--hero-grid-bg, rgb(var(--color-background-rgb)));
+    color: var(--hero-grid-text, rgb(var(--color-foreground-rgb)));
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    min-height: auto;
+    aspect-ratio: var(--hero-grid-aspect, auto);
+    display: grid;
+    grid-template-rows: 1fr auto;
+  }
+
+  .hero-grid__media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .hero-grid__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero-grid__content {
+    position: relative;
+    z-index: 1;
+    padding: clamp(16px, 3vw, 24px);
+    display: grid;
+    gap: 8px;
+    align-content: end;
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.25) 100%);
+  }
+
+  .hero-grid__eyebrow {
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+    margin: 0;
+  }
+
+  .hero-grid__heading {
+    margin: 0;
+    font-size: clamp(1.2rem, 2vw, 1.4rem);
+    font-family: "Instrument Serif", sans-serif !important;
+  }
+
+  .hero-grid__body {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+
+  .hero-grid__cta {
+    justify-self: start;
+    padding: 10px 14px;
+    border-radius: 999px;
+    background: rgb(var(--color-foreground-rgb) / 0.9);
+    color: rgb(var(--color-background-rgb));
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: opacity 0.2s ease;
+  }
+
+  .hero-grid__cta:hover {
+    opacity: 0.9;
+  }
+
+  @media screen and (max-width: 749px) {
+    .hero-grid.section {
+      overflow: hidden;
+      padding-inline: 0 !important;
+      padding-block: 0 !important;
+    }
+
+    .hero-grid__inner {
+      display: flex;
+      flex-direction: row;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      gap: 0;
+      width: 100%;
+      -webkit-overflow-scrolling: touch;
+      margin: 0;
+      padding: 0;
+      contain: layout;
+    }
+
+    .hero-grid__inner::-webkit-scrollbar {
+      display: none;
+    }
+
+    .hero-grid__tile {
+      flex: 0 0 100%;
+      flex-shrink: 0;
+      flex-grow: 0;
+      scroll-snap-align: start;
+      width: 100%;
+      max-width: 100%;
+      height: 100vh;
+      min-height: 100vh;
+      border-radius: 0;
+      aspect-ratio: auto;
+      box-sizing: border-box;
+      position: relative;
+      overflow: hidden;
+      contain: layout style;
+    }
+
+    .hero-grid__dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .hero-grid__dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 1px solid rgb(var(--color-foreground-rgb));
+      background: transparent;
+      padding: 0;
+      cursor: pointer;
+      opacity: 0.4;
+      transition: opacity 0.2s ease, background 0.2s ease;
+    }
+
+    .hero-grid__dot.is-active {
+      opacity: 1;
+      background: rgb(var(--color-foreground-rgb));
+    }
+  }
+
+  @media screen and (min-width: 750px) {
+    .hero-grid__dots {
+      display: none;
+    }
+  }
+{% endstylesheet %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const grid = document.querySelector('[data-hero-grid]');
+    const dotsContainer = document.querySelector('[data-hero-grid-dots]');
+    if (!grid || !dotsContainer) return;
+
+    const tiles = Array.from(grid.children);
+    let activeIndex = 0;
+    let autoplayTimer = null;
+    const interval = 4000;
+
+    const isMobile = () => window.innerWidth <= 749;
+
+    const createDots = () => {
+      dotsContainer.innerHTML = '';
+      if (!isMobile()) return;
+      
+      tiles.forEach((_, idx) => {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'hero-grid__dot';
+        dot.dataset.index = idx;
+        dotsContainer.appendChild(dot);
+      });
+    };
+
+    createDots();
+
+    const getDots = () => Array.from(dotsContainer.children);
+
+    const setActive = (idx) => {
+      activeIndex = Math.max(0, Math.min(idx, tiles.length - 1));
+      if (!isMobile()) return;
+      
+      const dots = getDots();
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('is-active', i === activeIndex);
+      });
+    };
+
+    const scrollToIndex = (idx) => {
+      const target = tiles[idx];
+      if (!target) return;
+      if (isMobile()) {
+        const tileWidth = target.offsetWidth || grid.clientWidth || 1;
+        grid.scrollTo({
+          left: idx * tileWidth,
+          behavior: 'smooth'
+        });
+      }
+      setActive(idx);
+    };
+
+    const updateActiveFromScroll = () => {
+      if (!isMobile()) return;
+      const tileWidth = tiles[0]?.offsetWidth || grid.clientWidth || 1;
+      const idx = Math.round(grid.scrollLeft / tileWidth);
+      setActive(idx);
+    };
+
+    const startAutoplay = () => {
+      clearAutoplay();
+      if (!isMobile()) return;
+      
+      autoplayTimer = setInterval(() => {
+        if (!isMobile()) {
+          clearAutoplay();
+          return;
+        }
+        const nextIdx = (activeIndex + 1) % tiles.length;
+        scrollToIndex(nextIdx);
+      }, interval);
+    };
+
+    const clearAutoplay = () => {
+      if (autoplayTimer) {
+        clearInterval(autoplayTimer);
+        autoplayTimer = null;
+      }
+    };
+
+    // Initialize dots and set up click handlers on mobile only
+    const initDots = () => {
+      if (!isMobile()) {
+        dotsContainer.innerHTML = '';
+        return;
+      }
+      
+      createDots();
+      const dots = getDots();
+      dots.forEach((dot) => {
+        dot.addEventListener('click', () => {
+          const idx = Number(dot.dataset.index);
+          clearAutoplay();
+          scrollToIndex(idx);
+          startAutoplay();
+        });
+      });
+    };
+
+    // Scroll handler - only active on mobile
+    const scrollHandler = () => {
+      if (isMobile()) {
+        updateActiveFromScroll();
+      }
+    };
+
+    grid.addEventListener('scroll', scrollHandler);
+
+    // Handle resize - recreate dots and toggle autoplay
+    const handleResize = () => {
+      clearAutoplay();
+      initDots();
+      setActive(activeIndex);
+      
+      if (isMobile()) {
+        startAutoplay();
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    // Initialize
+    setActive(0);
+    initDots();
+    if (isMobile()) {
+      startAutoplay();
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Homepage hero grid",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tile",
+      "name": "Tile",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Background image"
+        },
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "Eyebrow"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Body"
+        },
+        {
+          "type": "text",
+          "id": "cta_label",
+          "label": "Button label"
+        },
+        {
+          "type": "url",
+          "id": "cta_link",
+          "label": "Button link"
+        },
+        {
+          "type": "checkbox",
+          "id": "cta_new_tab",
+          "label": "Open in new tab",
+          "default": false
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Fallback background color"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text color"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Homepage hero grid",
+      "category": "Custom",
+      "blocks": [
+        {
+          "type": "tile",
+          "settings": {
+            "subheading": "Featured Line",
+            "heading": "Sunscreen",
+            "body": "Protects your skin daily",
+            "background_color": "#f5c174"
+          }
+        },
+        {
+          "type": "tile",
+          "settings": {
+            "subheading": "Velvet Skin",
+            "heading": "Balm",
+            "body": "Breathable balm that heals",
+            "background_color": "#d87e8f"
+          }
+        },
+        {
+          "type": "tile",
+          "settings": {
+            "subheading": "SatinSkin",
+            "heading": "Cleanser",
+            "body": "Gentle cleanser that respects your skin",
+            "background_color": "#6b8bcf"
+          }
+        },
+        {
+          "type": "tile",
+          "settings": {
+            "subheading": "Glowrevive",
+            "heading": "Cream",
+            "body": "Radiance-supporting cream for everyday",
+            "background_color": "#5b4c5f"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,212 @@
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+<section
+  class="section section--full-width home-brand-story color-{{ section.settings.color_scheme }} spacing-style"
+  style="{% render 'spacing-style', settings: section.settings %}"
+>
+  <div class="home-brand-story__media">
+    {% if section.settings.video != blank %}
+      {% render 'background-video', background_video: section.settings.video, background_video_position: 'cover', placeholder: 'lifestyle-1' %}
+    {% elsif section.settings.image != blank %}
+      {{ section.settings.image | image_url: width: 2400 | image_tag: loading: 'lazy' }}
+    {% else %}
+      {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder' }}
+    {% endif %}
+    <div class="home-brand-story__overlay"></div>
+  </div>
+  <div class="home-brand-story__content">
+    <div class="home-brand-story__columns">
+      <div class="home-brand-story__column home-brand-story__column--left">
+        {% if section.settings.headline != blank %}
+          <h2 class="home-brand-story__headline h2">{{ section.settings.headline }}</h2>
+        {% endif %}
+        {% if section.settings.subheadline != blank %}
+          <p class="home-brand-story__subheadline h4 rte">{{ section.settings.subheadline }}</p>
+        {% endif %}
+      </div>
+      <div class="home-brand-story__column home-brand-story__column--right">
+        {% if section.settings.body != blank %}
+          <div class="home-brand-story__body rte">{{ section.settings.body }}</div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .home-brand-story {
+    position: relative;
+    overflow: hidden;
+    min-height: 80vh;
+    display: grid;
+    align-items: center;
+  }
+
+  .home-brand-story__media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .home-brand-story__media img,
+  .home-brand-story__media svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .home-brand-story__media video-background-component {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .home-brand-story__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.25));
+    z-index: 1;
+  }
+
+  .home-brand-story__content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: clamp(40px, 8vw, 80px) clamp(20px, 5vw, 60px);
+    color: #fff;
+  }
+
+  .home-brand-story__columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(40px, 8vw, 120px);
+    align-items: start;
+  }
+
+  @media (max-width: 749px) {
+    .home-brand-story__columns {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+
+  .home-brand-story__column {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .home-brand-story__headline {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.95);
+  }
+
+  .home-brand-story__subheadline {
+    margin: 0;
+    font-family: "Instrument Serif", sans-serif;
+    color: rgba(255, 255, 255, 0.95);
+  }
+
+  .home-brand-story__subheadline u,
+  .home-brand-story__body u {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+
+  .home-brand-story__body {
+    margin: 0;
+    font-family: var(--font-paragraph--family);
+    font-size: 1rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.95);
+  }
+
+  .home-brand-story__body p {
+    margin: 0;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Brand story banner",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Background video"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Fallback background image",
+      "info": "Used if video is not provided"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Oladerm is made to perform in real conditions."
+    },
+    {
+      "type": "richtext",
+      "id": "subheadline",
+      "label": "Sub-headline",
+      "default": "<p><u>Heat</u>, <u>humidity</u>, and <u>daily sun exposure</u> while delivering <u>effective</u>, <u>reliable</u> <u>care</u> your <u>skin</u> can <u>trust</u>.</p>",
+      "info": "Use <u> tags to underline specific words for emphasis"
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Body text",
+      "default": "<p>Thoughtfully formulated with skin-first principles at its core. Our products are <u>free from added fragrance and over 2000 harsh or unnecessary chemicals</u>, making them gentle enough for sensitive and reactive skin. Each formula is <u>dermatologically tested</u>, <u>pH balanced</u>, and <u>designed to support the skin's natural barrier without irritation</u>. Carefully developed for everyday use.</p>",
+      "info": "Use <u> tags to underline specific phrases for emphasis"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-3"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "Brand story banner",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

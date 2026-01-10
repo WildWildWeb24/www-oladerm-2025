@@ -112,6 +112,31 @@
 
   assign fetch_priority = 'auto'
 
+  assign hero_aspect_ratio = nil
+  if media_1 == 'image'
+    assign hero_aspect_ratio = section.settings.image_1.aspect_ratio
+  elsif media_2 == 'image'
+    assign hero_aspect_ratio = section.settings.image_2.aspect_ratio
+  endif
+
+  assign hero_aspect_ratio_mobile = nil
+  if fallback_to_desktop
+    assign hero_aspect_ratio_mobile = hero_aspect_ratio
+  elsif media_1_mobile == 'image'
+    assign hero_aspect_ratio_mobile = section.settings.image_1_mobile.aspect_ratio
+  elsif media_2_mobile == 'image'
+    assign hero_aspect_ratio_mobile = section.settings.image_2_mobile.aspect_ratio
+  endif
+
+  if hero_aspect_ratio == blank and hero_aspect_ratio_mobile != blank
+    assign hero_aspect_ratio = hero_aspect_ratio_mobile
+  endif
+
+  assign hero_has_image_ratio = false
+  if hero_aspect_ratio != blank
+    assign hero_has_image_ratio = true
+  endif
+
   if section.index == 1
     assign fetch_priority = 'high'
   endif
@@ -128,6 +153,7 @@
         height: section.settings.image_1.height,
         alt: section.settings.image_1.alt,
         class: media_image_desktop_class,
+        style: 'aspect-ratio: ' | append: section.settings.image_1.aspect_ratio,
         sizes: sizes,
         fetchpriority: fetch_priority,
         data-testid: 'hero-desktop-image-1'
@@ -160,6 +186,7 @@
         height: section.settings.image_2.height,
         alt: section.settings.image_2.alt,
         class: media_image_desktop_class,
+        style: 'aspect-ratio: ' | append: section.settings.image_2.aspect_ratio,
         sizes: sizes,
         fetchpriority: fetch_priority,
         data-testid: 'hero-desktop-image-2'
@@ -198,6 +225,7 @@
           height: section.settings.image_1_mobile.height,
           alt: section.settings.image_1_mobile.alt,
           class: 'hero__image hero__image--mobile',
+        style: 'aspect-ratio: ' | append: section.settings.image_1_mobile.aspect_ratio,
           sizes: sizes_mobile,
           fetchpriority: fetch_priority,
           data-testid: 'hero-mobile-image-1'
@@ -230,6 +258,7 @@
           height: section.settings.image_2_mobile.height,
           alt: section.settings.image_2_mobile.alt,
           class: 'hero__image hero__image--mobile',
+        style: 'aspect-ratio: ' | append: section.settings.image_2_mobile.aspect_ratio,
           sizes: sizes_mobile,
           fetchpriority: fetch_priority,
           data-testid: 'hero-mobile-image-2'
@@ -375,18 +404,29 @@
 
 <div
   id="Hero-{{ section.id }}"
-  class="hero color-{{ section.settings.color_scheme }}{% if section.blocks.size == 0 and section.settings.section_height == 'auto' %} hero--no-blocks-auto-height{% endif %}{% if section.settings.stack_media_on_mobile %} hero--stack-mobile{% endif %}"
+  class="hero color-{{ section.settings.color_scheme }}{% if hero_has_image_ratio %} hero--match-image-ratio{% endif %}{% if section.blocks.size == 0 and section.settings.section_height == 'auto' %} hero--no-blocks-auto-height{% endif %}{% if section.settings.stack_media_on_mobile %} hero--stack-mobile{% endif %}"
   style="
     --hero-border-style: {{ section.settings.border }};
     --hero-border-width: {{ section.settings.border_width }}px;
     --hero-border-opacity: {{ section.settings.border_opacity }}%;
     --blur-opacity: {{ section.settings.reflection_opacity | divided_by: 100.0 }};
-    {% if section.settings.section_height == 'custom' %}
+    {% if hero_has_image_ratio %}
+      --hero-min-height: calc(100vw / {{ hero_aspect_ratio }});
+    {% elsif section.settings.section_height == 'custom' %}
       --hero-min-height: {{ section.settings.section_height_custom }}svh;
     {% elsif section.settings.section_height == "full-screen" %}
        --hero-min-height: 100svh;
     {% else %}
       --hero-min-height: var(--section-height-{{ section.settings.section_height }});
+    {% endif %}
+    {% if hero_aspect_ratio_mobile != blank %}
+      --hero-min-height-mobile: calc(100vw / {{ hero_aspect_ratio_mobile }});
+    {% endif %}
+    {% if hero_aspect_ratio != blank %}
+      --hero-media-aspect-ratio: {{ hero_aspect_ratio }};
+    {% endif %}
+    {% if hero_aspect_ratio_mobile != blank %}
+      --hero-media-aspect-ratio-mobile: {{ hero_aspect_ratio_mobile }};
     {% endif %}
   "
   {% if request.visual_preview_mode %}
@@ -435,7 +475,7 @@
     {%- endif -%}
     <div
       class="hero__media-wrapper"
-      style="--hero-media-count: {{ media_count }};--hero-media-count-mobile: {{ media_count_mobile }};{%- if section.settings.image_1 != blank -%} --hero-media-aspect-ratio: {{ section.settings.image_1.aspect_ratio }};{% endif %}"
+      style="--hero-media-count: {{ media_count }};--hero-media-count-mobile: {{ media_count_mobile }};{% if hero_aspect_ratio != blank %} --hero-media-aspect-ratio: {{ hero_aspect_ratio }};{% endif %}{% if hero_aspect_ratio_mobile != blank %} --hero-media-aspect-ratio-mobile: {{ hero_aspect_ratio_mobile }};{% endif %}"
       data-testid="hero-media-wrapper"
     >
       {% liquid
@@ -475,6 +515,16 @@
   .hero {
     position: relative;
     min-height: calc(var(--hero-min-height) - var(--hero-height-offset));
+  }
+
+  .hero.hero--match-image-ratio {
+    min-height: calc(var(--hero-min-height, 0px) - var(--hero-height-offset));
+  }
+
+  @media screen and (max-width: 749px) {
+    .hero.hero--match-image-ratio {
+      min-height: calc(var(--hero-min-height-mobile, var(--hero-min-height, 0px)) - var(--hero-height-offset));
+    }
   }
 
   .hero[data-shopify-visual-preview] {
@@ -517,6 +567,61 @@
     display: grid;
     grid-column: 1 / -1;
     grid-template-columns: repeat(var(--hero-media-count, 1), 1fr);
+    gap: 0;
+  }
+
+  .hero--match-image-ratio {
+    --hero-active-aspect-ratio: var(--hero-media-aspect-ratio, 1);
+  }
+
+  @media screen and (max-width: 749px) {
+    .hero--match-image-ratio {
+      --hero-active-aspect-ratio: var(--hero-media-aspect-ratio-mobile, var(--hero-media-aspect-ratio, 1));
+    }
+  }
+
+  .hero--match-image-ratio .hero__container {
+    min-height: 0;
+  }
+
+  .hero--match-image-ratio .hero__container::before {
+    content: '';
+    display: block;
+    padding-bottom: calc(100% / var(--hero-active-aspect-ratio));
+  }
+
+  .hero--match-image-ratio {
+    min-height: auto;
+  }
+
+  .hero--match-image-ratio .hero__container {
+    min-height: auto;
+    height: auto;
+  }
+
+  .hero--match-image-ratio .hero__media-wrapper {
+    position: relative;
+    inset: auto;
+    grid-auto-rows: auto;
+  }
+
+  .hero--match-image-ratio .hero__image,
+  .hero--match-image-ratio .hero__video {
+    width: 100%;
+    height: auto;
+    aspect-ratio: var(--hero-active-aspect-ratio);
+    object-fit: contain;
+  }
+
+  .hero--match-image-ratio .hero__media-wrapper,
+  .hero--match-image-ratio .hero__content-wrapper {
+    position: absolute;
+    inset: 0;
+  }
+
+  .hero--match-image-ratio .hero__image,
+  .hero--match-image-ratio .hero__video {
+    object-fit: contain;
   }
 
   .hero--auto .hero__image,
@@ -583,6 +688,7 @@
     .hero--stack-mobile .hero__media-wrapper {
       grid-template-columns: 1fr;
       grid-template-rows: repeat(var(--hero-media-count-mobile, 1), calc(100% / var(--hero-media-count-mobile, 1)));
+      gap: 0;
     }
   }
 
