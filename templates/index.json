@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero_grid": {
@@ -40,7 +49,12 @@
           }
         }
       },
-      "block_order": ["tile_1", "tile_2", "tile_3", "tile_4"],
+      "block_order": [
+        "tile_1",
+        "tile_2",
+        "tile_3",
+        "tile_4"
+      ],
       "settings": {
         "color_scheme": "scheme-1",
         "padding-block-start": 32,
@@ -125,7 +139,10 @@
               "blocks": {}
             }
           },
-          "block_order": ["product_list_text", "product_list_button"]
+          "block_order": [
+            "product_list_text",
+            "product_list_button"
+          ]
         },
         "static-product-card": {
           "type": "_product-card",
@@ -210,7 +227,11 @@
               "blocks": {}
             }
           },
-          "block_order": ["product_card_gallery", "product_title", "price"]
+          "block_order": [
+            "product_card_gallery",
+            "product_title",
+            "price"
+          ]
         }
       },
       "name": "Shop our range",
@@ -237,8 +258,6 @@
     "brand_story": {
       "type": "home-brand-story",
       "settings": {
-        "kicker": "Oloderm is made to perform in real conditions.",
-        "heading": "Thoughtfully formulated with skin-first principles at its core.",
         "body": "<p>Products are free from added fragrance and unnecessary chemicals, making them gentle enough for sensitive and reactive skin. Each formula is dermatologically tested, pH balanced, and designed to support the skin’s natural barrier.</p>",
         "color_scheme": "scheme-3",
         "padding-block-start": 48,
@@ -284,7 +303,13 @@
           }
         }
       },
-      "block_order": ["concern1", "concern2", "concern3", "concern4", "concern5"],
+      "block_order": [
+        "concern1",
+        "concern2",
+        "concern3",
+        "concern4",
+        "concern5"
+      ],
       "settings": {
         "heading": "Shop by concern",
         "section_width": "page-width",
