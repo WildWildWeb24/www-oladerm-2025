@@ -18,7 +18,11 @@
             "subheading": "Featured line",
             "heading": "Sunscreen",
             "body": "Protects your skin daily",
-            "background_color": "#f5c174"
+            "cta_label": "",
+            "cta_link": "",
+            "cta_new_tab": false,
+            "background_color": "#f5c174",
+            "text_color": ""
           }
         },
         "tile_2": {
@@ -27,7 +31,11 @@
             "subheading": "Velvet Skin",
             "heading": "Balm",
             "body": "Breathable balm that heals",
-            "background_color": "#d87e8f"
+            "cta_label": "",
+            "cta_link": "",
+            "cta_new_tab": false,
+            "background_color": "#d87e8f",
+            "text_color": ""
           }
         },
         "tile_3": {
@@ -36,7 +44,11 @@
             "subheading": "SatinSkin",
             "heading": "Cleanser",
             "body": "Gentle cleanser that respects your skin",
-            "background_color": "#6b8bcf"
+            "cta_label": "",
+            "cta_link": "",
+            "cta_new_tab": false,
+            "background_color": "#6b8bcf",
+            "text_color": ""
           }
         },
         "tile_4": {
@@ -45,7 +57,11 @@
             "subheading": "Glowrevive",
             "heading": "Cream",
             "body": "Radiance-supporting cream for everyday",
-            "background_color": "#5b4c5f"
+            "cta_label": "",
+            "cta_link": "",
+            "cta_new_tab": false,
+            "background_color": "#5b4c5f",
+            "text_color": ""
           }
         }
       },
@@ -258,6 +274,9 @@
     "brand_story": {
       "type": "home-brand-story",
       "settings": {
+        "video": "shopify://files/videos/oladerm-hero-banner-web-rez.mp4",
+        "headline": "Oladerm is made to perform in real conditions.",
+        "subheadline": "<p><span style=\"text-decoration:underline\">Heat</span>, <span style=\"text-decoration:underline\">humidity</span>, and <span style=\"text-decoration:underline\">daily sun exposure</span> while delivering <span style=\"text-decoration:underline\">effective</span>, <span style=\"text-decoration:underline\">reliable</span> <span style=\"text-decoration:underline\">care</span> your <span style=\"text-decoration:underline\">skin</span> can <span style=\"text-decoration:underline\">trust</span>.</p>",
         "body": "<p>Products are free from added fragrance and unnecessary chemicals, making them gentle enough for sensitive and reactive skin. Each formula is dermatologically tested, pH balanced, and designed to support the skin’s natural barrier.</p>",
         "color_scheme": "scheme-3",
         "padding-block-start": 48,
@@ -271,35 +290,50 @@
           "type": "concern",
           "settings": {
             "label": "Dry/Dehydrated Skin",
-            "description": "Hydrate and lock in moisture"
+            "description": "Hydrate and lock in moisture",
+            "cta_label": "Add to cart",
+            "cta_link": "",
+            "cta_new_tab": false
           }
         },
         "concern2": {
           "type": "concern",
           "settings": {
             "label": "Uneven Texture",
-            "description": "Smooth and refine gently"
+            "description": "Smooth and refine gently",
+            "cta_label": "Add to cart",
+            "cta_link": "",
+            "cta_new_tab": false
           }
         },
         "concern3": {
           "type": "concern",
           "settings": {
             "label": "Dull, Tired Skin",
-            "description": "Boost radiance daily"
+            "description": "Boost radiance daily",
+            "cta_label": "Add to cart",
+            "cta_link": "",
+            "cta_new_tab": false
           }
         },
         "concern4": {
           "type": "concern",
           "settings": {
             "label": "Blemishes",
-            "description": "Clarify without stripping"
+            "description": "Clarify without stripping",
+            "cta_label": "Add to cart",
+            "cta_link": "",
+            "cta_new_tab": false
           }
         },
         "concern5": {
           "type": "concern",
           "settings": {
             "label": "Daily UV Exposure",
-            "description": "Protect and nourish"
+            "description": "Protect and nourish",
+            "cta_label": "Add to cart",
+            "cta_link": "",
+            "cta_new_tab": false
           }
         }
       },
@@ -320,6 +354,86 @@
     },
     "featured_1": {
       "type": "featured-product",
+      "blocks": {
+        "media": {
+          "type": "_media-without-appearance",
+          "static": true,
+          "settings": {
+            "media_type": "image",
+            "link": "",
+            "video_loop": true,
+            "video_autoplay": false,
+            "image_position": "cover",
+            "video_position": "cover"
+          },
+          "blocks": {}
+        },
+        "featured-product": {
+          "type": "_featured-product",
+          "static": true,
+          "settings": {},
+          "blocks": {
+            "featured-product-title": {
+              "type": "product-title",
+              "static": true,
+              "settings": {
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h4",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "featured-product-price": {
+              "type": "_featured-product-price",
+              "static": true,
+              "settings": {
+                "show_sale_price_first": true,
+                "type_preset": ""
+              },
+              "blocks": {}
+            },
+            "featured-product-gallery": {
+              "type": "_featured-product-gallery",
+              "static": true,
+              "settings": {
+                "image_ratio": "adapt",
+                "constrain_to_viewport": "contain"
+              },
+              "blocks": {}
+            },
+            "featured-product-swatches": {
+              "type": "swatches",
+              "static": true,
+              "settings": {
+                "product_swatches_alignment": "flex-start",
+                "product_swatches_alignment_mobile": "flex-start",
+                "hide_padding": false,
+                "product_swatches_padding_top": 4,
+                "product_swatches_padding_bottom": 0,
+                "product_swatches_padding_left": 0,
+                "product_swatches_padding_right": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": []
+        }
+      },
       "settings": {
         "product": "",
         "layout": "media-left",
@@ -330,6 +444,86 @@
     },
     "featured_2": {
       "type": "featured-product",
+      "blocks": {
+        "media": {
+          "type": "_media-without-appearance",
+          "static": true,
+          "settings": {
+            "media_type": "image",
+            "link": "",
+            "video_loop": true,
+            "video_autoplay": false,
+            "image_position": "cover",
+            "video_position": "cover"
+          },
+          "blocks": {}
+        },
+        "featured-product": {
+          "type": "_featured-product",
+          "static": true,
+          "settings": {},
+          "blocks": {
+            "featured-product-title": {
+              "type": "product-title",
+              "static": true,
+              "settings": {
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h4",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "featured-product-price": {
+              "type": "_featured-product-price",
+              "static": true,
+              "settings": {
+                "show_sale_price_first": true,
+                "type_preset": ""
+              },
+              "blocks": {}
+            },
+            "featured-product-gallery": {
+              "type": "_featured-product-gallery",
+              "static": true,
+              "settings": {
+                "image_ratio": "adapt",
+                "constrain_to_viewport": "contain"
+              },
+              "blocks": {}
+            },
+            "featured-product-swatches": {
+              "type": "swatches",
+              "static": true,
+              "settings": {
+                "product_swatches_alignment": "flex-start",
+                "product_swatches_alignment_mobile": "flex-start",
+                "hide_padding": false,
+                "product_swatches_padding_top": 4,
+                "product_swatches_padding_bottom": 0,
+                "product_swatches_padding_left": 0,
+                "product_swatches_padding_right": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": []
+        }
+      },
       "settings": {
         "product": "",
         "layout": "media-left",
@@ -340,6 +534,86 @@
     },
     "featured_3": {
       "type": "featured-product",
+      "blocks": {
+        "media": {
+          "type": "_media-without-appearance",
+          "static": true,
+          "settings": {
+            "media_type": "image",
+            "link": "",
+            "video_loop": true,
+            "video_autoplay": false,
+            "image_position": "cover",
+            "video_position": "cover"
+          },
+          "blocks": {}
+        },
+        "featured-product": {
+          "type": "_featured-product",
+          "static": true,
+          "settings": {},
+          "blocks": {
+            "featured-product-title": {
+              "type": "product-title",
+              "static": true,
+              "settings": {
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h4",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "featured-product-price": {
+              "type": "_featured-product-price",
+              "static": true,
+              "settings": {
+                "show_sale_price_first": true,
+                "type_preset": ""
+              },
+              "blocks": {}
+            },
+            "featured-product-gallery": {
+              "type": "_featured-product-gallery",
+              "static": true,
+              "settings": {
+                "image_ratio": "adapt",
+                "constrain_to_viewport": "contain"
+              },
+              "blocks": {}
+            },
+            "featured-product-swatches": {
+              "type": "swatches",
+              "static": true,
+              "settings": {
+                "product_swatches_alignment": "flex-start",
+                "product_swatches_alignment_mobile": "flex-start",
+                "hide_padding": false,
+                "product_swatches_padding_top": 4,
+                "product_swatches_padding_bottom": 0,
+                "product_swatches_padding_left": 0,
+                "product_swatches_padding_right": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": []
+        }
+      },
       "settings": {
         "product": "",
         "layout": "media-left",
@@ -350,6 +624,86 @@
     },
     "featured_4": {
       "type": "featured-product",
+      "blocks": {
+        "media": {
+          "type": "_media-without-appearance",
+          "static": true,
+          "settings": {
+            "media_type": "image",
+            "link": "",
+            "video_loop": true,
+            "video_autoplay": false,
+            "image_position": "cover",
+            "video_position": "cover"
+          },
+          "blocks": {}
+        },
+        "featured-product": {
+          "type": "_featured-product",
+          "static": true,
+          "settings": {},
+          "blocks": {
+            "featured-product-title": {
+              "type": "product-title",
+              "static": true,
+              "settings": {
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h4",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "featured-product-price": {
+              "type": "_featured-product-price",
+              "static": true,
+              "settings": {
+                "show_sale_price_first": true,
+                "type_preset": ""
+              },
+              "blocks": {}
+            },
+            "featured-product-gallery": {
+              "type": "_featured-product-gallery",
+              "static": true,
+              "settings": {
+                "image_ratio": "adapt",
+                "constrain_to_viewport": "contain"
+              },
+              "blocks": {}
+            },
+            "featured-product-swatches": {
+              "type": "swatches",
+              "static": true,
+              "settings": {
+                "product_swatches_alignment": "flex-start",
+                "product_swatches_alignment_mobile": "flex-start",
+                "hide_padding": false,
+                "product_swatches_padding_top": 4,
+                "product_swatches_padding_bottom": 0,
+                "product_swatches_padding_left": 0,
+                "product_swatches_padding_right": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": []
+        }
+      },
       "settings": {
         "product": "",
         "layout": "media-left",
