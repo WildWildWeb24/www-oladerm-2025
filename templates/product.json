@@ -547,6 +547,7 @@
         "text_AwqinL",
         "accordion_36UnCh"
       ],
+      "disabled": true,
       "name": "t:names.faq_section",
       "settings": {
         "content_direction": "column",
