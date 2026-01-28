@@ -1,9 +1,7 @@
-
 {% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
 
 {% style %}
   .ai-video-gallery-{{ ai_gen_id }} {
-    display: block;
     width: 100%;
     padding: {{ block.settings.section_padding }}px 0;
   }
@@ -24,15 +22,14 @@
     position: relative;
     width: 100%;
     padding-bottom: {{ block.settings.aspect_ratio }}%;
-    background-color: #000000;
+    background: #000;
     border-radius: {{ block.settings.border_radius }}px;
     overflow: hidden;
   }
 
   .ai-video-gallery-video-{{ ai_gen_id }} {
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -40,19 +37,16 @@
 
   .ai-video-gallery-placeholder-{{ ai_gen_id }} {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f5f5f5;
-    color: #999999;
+    background: #f5f5f5;
+    color: #999;
     font-size: 14px;
   }
 
-  @media screen and (max-width: 749px) {
+  @media (max-width: 749px) {
     .ai-video-gallery-grid-{{ ai_gen_id }} {
       display: flex;
       overflow-x: auto;
@@ -74,139 +68,82 @@
   }
 {% endstyle %}
 
-<product-video-gallery-{{ ai_gen_id }}
+<product-video-gallery
   class="ai-video-gallery-{{ ai_gen_id }}"
   {{ block.shopify_attributes }}
 >
   <div class="ai-video-gallery-container-{{ ai_gen_id }}">
     <div class="ai-video-gallery-grid-{{ ai_gen_id }}">
-     {% liquid
-        assign video_1 = product.metafields.custom.video_1.value | file_url
-        assign video_2 = product.metafields.custom.video_2.value | file_url
-        assign video_3 = product.metafields.custom.video_3.value | file_url
-      %}
 
-      <div class="ai-video-gallery-item-{{ ai_gen_id }}">
-        {% if video_1 != blank %}
-        {% assign video = product.metafields.custom.video_1.value %}
-          <video
-            class="ai-video-gallery-video-{{ ai_gen_id }}"
-            autoplay
-            muted
-            loop
-            playsinline
-            preload="metadata"
-          >
-            {% for source in video.sources %}
-              {% if source.format == 'mp4' %}
-                <source src="{{ source.url }}" type="video/mp4">
-              {% endif %}
-            {% endfor %}
-          </video>
-        {% else %}
-          <div class="ai-video-gallery-placeholder-{{ ai_gen_id }}">
-            Video 1
-          </div>
-        {% endif %}
-      </div>
+      {% for i in (1..3) %}
+        {% assign key = 'video_' | append: i %}
+        {% assign video = product.metafields.custom[key].value %}
 
-      <div class="ai-video-gallery-item-{{ ai_gen_id }}">
-        {% if video_2 != blank %}
-          <video
-            class="ai-video-gallery-video-{{ ai_gen_id }}"
-            src="{{ video_2 }}"
-            autoplay
-            muted
-            loop
-            playsinline
-            preload="metadata"
-          ></video>
-        {% else %}
-          <div class="ai-video-gallery-placeholder-{{ ai_gen_id }}">
-            Video 2
-          </div>
-        {% endif %}
-      </div>
+        <div class="ai-video-gallery-item-{{ ai_gen_id }}">
+          {% if video %}
+            <video
+              class="ai-video-gallery-video-{{ ai_gen_id }}"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+            >
+              {% for source in video.sources %}
+                {% if source.format == 'mp4' %}
+                  <source src="{{ source.url }}" type="video/mp4">
+                {% endif %}
+              {% endfor %}
+            </video>
+          {% else %}
+            <div class="ai-video-gallery-placeholder-{{ ai_gen_id }}">
+              Video {{ i }}
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
 
-      <div class="ai-video-gallery-item-{{ ai_gen_id }}">
-        {% if video_3 != blank %}
-          <video
-            class="ai-video-gallery-video-{{ ai_gen_id }}"
-            src="{{ video_3 }}"
-            autoplay
-            muted
-            loop
-            playsinline
-            preload="metadata"
-          ></video>
-        {% else %}
-          <div class="ai-video-gallery-placeholder-{{ ai_gen_id }}">
-            Video 3
-          </div>
-        {% endif %}
-      </div>
     </div>
   </div>
-</product-video-gallery-{{ ai_gen_id }}>
+</product-video-gallery>
 
 <script>
-  (function() {
-    class ProductVideoGallery{{ ai_gen_id }} extends HTMLElement {
-      constructor() {
-        super();
-      }
-
+  (function () {
+    class ProductVideoGallery extends HTMLElement {
       connectedCallback() {
-        this.videos = this.querySelectorAll('.ai-video-gallery-video-{{ ai_gen_id }}');
-        this.setupVideoPlayback();
-        this.setupIntersectionObserver();
+        this.videos = this.querySelectorAll('video');
+        this.initObserver();
       }
 
-      setupVideoPlayback() {
-        this.videos.forEach((video) => {
-          video.addEventListener('loadedmetadata', () => {
-            video.play().catch(() => {});
-          });
-        });
-      }
+      initObserver() {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              const video = entry.target;
+              if (entry.isIntersecting) {
+                video.play().catch(() => {});
+              } else {
+                video.pause();
+              }
+            });
+          },
+          { threshold: 0.5 }
+        );
 
-      setupIntersectionObserver() {
-        const options = {
-          root: null,
-          rootMargin: '0px',
-          threshold: 0.5
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            const video = entry.target;
-            if (entry.isIntersecting) {
-              video.play().catch(() => {});
-            } else {
-              video.pause();
-            }
-          });
-        }, options);
-
-        this.videos.forEach((video) => {
-          observer.observe(video);
-        });
+        this.videos.forEach((video) => observer.observe(video));
       }
     }
 
-    customElements.define('product-video-gallery-{{ ai_gen_id }}', ProductVideoGallery{{ ai_gen_id }});
+    if (!customElements.get('product-video-gallery')) {
+      customElements.define('product-video-gallery', ProductVideoGallery);
+    }
   })();
 </script>
 
 {% schema %}
 {
   "name": "Product video gallery",
-  "tag": null,
   "settings": [
-    {
-      "type": "header",
-      "content": "Layout"
-    },
     {
       "type": "range",
       "id": "section_padding",
@@ -214,7 +151,6 @@
       "min": 0,
       "max": 100,
       "step": 5,
-      "unit": "px",
       "default": 40
     },
     {
@@ -224,7 +160,6 @@
       "min": 0,
       "max": 50,
       "step": 5,
-      "unit": "px",
       "default": 20
     },
     {
@@ -234,23 +169,16 @@
       "min": 0,
       "max": 30,
       "step": 2,
-      "unit": "px",
       "default": 8
     },
     {
       "type": "range",
       "id": "aspect_ratio",
-      "label": "Desktop aspect ratio",
+      "label": "Desktop aspect ratio (%)",
       "min": 50,
       "max": 150,
       "step": 5,
-      "unit": "%",
-      "default": 100,
-      "info": "100% = square, 56% = 16:9, 75% = 4:3"
-    },
-    {
-      "type": "header",
-      "content": "Mobile slider"
+      "default": 100
     },
     {
       "type": "range",
@@ -259,38 +187,24 @@
       "min": 0,
       "max": 30,
       "step": 5,
-      "unit": "px",
       "default": 15
     },
     {
       "type": "range",
       "id": "mobile_slide_width",
-      "label": "Mobile slide width",
+      "label": "Mobile slide width (%)",
       "min": 70,
       "max": 100,
       "step": 5,
-      "unit": "%",
       "default": 85
     },
     {
       "type": "range",
       "id": "mobile_aspect_ratio",
-      "label": "Mobile aspect ratio",
+      "label": "Mobile aspect ratio (%)",
       "min": 50,
       "max": 150,
       "step": 5,
-      "unit": "%",
-      "default": 100,
-      "info": "100% = square, 56% = 16:9, 75% = 4:3"
-    },
-    {
-      "type": "range",
-      "id": "desktop_width_percent",
-      "label": "Desktop width",
-      "min": 50,
-      "max": 100,
-      "step": 5,
-      "unit": "%",
       "default": 100
     }
   ],
