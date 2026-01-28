@@ -87,22 +87,23 @@
       %}
 
       <div class="ai-video-gallery-item-{{ ai_gen_id }}">
-        {% if video_1 != blank %}
-         <video
-          class="ai-video-gallery-video-{{ ai_gen_id }}"
-          autoplay
-          muted
-          loop
-          playsinline
-          preload="metadata"
-        >
-          <source src="{{ video_1 }}" type="video/mp4">
-        </video>
-        {% else %}
-          <div class="ai-video-gallery-placeholder-{{ ai_gen_id }}">
-            Video 1
-          </div>
-        {% endif %}
+        {% if product.metafields.custom.video_1 %}
+  {% assign video = product.metafields.custom.video_1.value %}
+  <video
+    class="ai-video-gallery-video-{{ ai_gen_id }}"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="metadata"
+  >
+    {% for source in video.sources %}
+      {% if source.format == 'mp4' %}
+        <source src="{{ source.url }}" type="video/mp4">
+      {% endif %}
+    {% endfor %}
+  </video>
+{% endif %}
       </div>
 
       <div class="ai-video-gallery-item-{{ ai_gen_id }}">
