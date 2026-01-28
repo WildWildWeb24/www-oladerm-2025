@@ -88,15 +88,16 @@
 
       <div class="ai-video-gallery-item-{{ ai_gen_id }}">
         {% if video_1 != blank %}
-          <video
-            class="ai-video-gallery-video-{{ ai_gen_id }}"
-            src="{{ video_1 }}"
-            autoplay
-            muted
-            loop
-            playsinline
-            preload="metadata"
-          ></video>
+         <video
+          class="ai-video-gallery-video-{{ ai_gen_id }}"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+        >
+          <source src="{{ video_1 }}" type="video/mp4">
+        </video>
         {% else %}
           <div class="ai-video-gallery-placeholder-{{ ai_gen_id }}">
             Video 1
