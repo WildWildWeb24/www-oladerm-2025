@@ -1,6 +1,332 @@
+{% doc %}
+  @prompt
+    Create a responsive HTML and CSS layout with the following requirements:
+    
+    Desktop view:
+    
+    Display three columns in a single row.
+    
+    Each column should contain a video embedded using a video URL.
+    
+    Mobile view:
+    
+    Convert the three columns into a horizontal slider / carousel.
+    
+    Users should be able to swipe to view each video.
+    
+    Video behavior:
+    
+    Videos must autoplay, be muted, and loop continuously.
+    
+    Ensure videos play smoothly on mobile and desktop browsers.
+    
+    Additional requirements:
+    
+    Use pure HTML and CSS (JavaScript only if absolutely required for the slider).
+    
+    Layout should be fully responsive.
+    
+    Follow clean, modern UI practices and cross-browser compatibility.
+    
+    note: Video is calling from dynamically from admin product page.
+    
+    i have created product metafields
+    name is 
+    video_1, video_2, video_3
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-video-gallery-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    padding: {{ block.settings.section_padding }}px 0;
+  }
+
+  .ai-video-gallery-container-{{ ai_gen_id }} {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .ai-video-gallery-grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: {{ block.settings.gap }}px;
+  }
+
+  .ai-video-gallery-item-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    padding-bottom: {{ block.settings.aspect_ratio }}%;
+    background-color: #000000;
+    border-radius: {{ block.settings.border_radius }}px;
+    overflow: hidden;
+  }
+
+  .ai-video-gallery-video-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ai-video-gallery-placeholder-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f5f5f5;
+    color: #999999;
+    font-size: 14px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-video-gallery-grid-{{ ai_gen_id }} {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      gap: {{ block.settings.mobile_gap }}px;
+    }
+
+    .ai-video-gallery-grid-{{ ai_gen_id }}::-webkit-scrollbar {
+      display: none;
+    }
+
+    .ai-video-gallery-item-{{ ai_gen_id }} {
+      flex: 0 0 {{ block.settings.mobile_slide_width }}%;
+      scroll-snap-align: start;
+      padding-bottom: {{ block.settings.mobile_aspect_ratio }}%;
+    }
+  }
+{% endstyle %}
+
+<product-video-gallery-{{ ai_gen_id }}
+  class="ai-video-gallery-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ai-video-gallery-container-{{ ai_gen_id }}">
+    <div class="ai-video-gallery-grid-{{ ai_gen_id }}">
+      {% liquid
+        assign video_1 = product.metafields.custom.video_1.value
+        assign video_2 = product.metafields.custom.video_2.value
+        assign video_3 = product.metafields.custom.video_3.value
+      %}
+
+      <div class="ai-video-gallery-item-{{ ai_gen_id }}">
+        {% if video_1 != blank %}
+          <video
+            class="ai-video-gallery-video-{{ ai_gen_id }}"
+            src="{{ video_1 }}"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+          ></video>
+        {% else %}
+          <div class="ai-video-gallery-placeholder-{{ ai_gen_id }}">
+            Video 1
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="ai-video-gallery-item-{{ ai_gen_id }}">
+        {% if video_2 != blank %}
+          <video
+            class="ai-video-gallery-video-{{ ai_gen_id }}"
+            src="{{ video_2 }}"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+          ></video>
+        {% else %}
+          <div class="ai-video-gallery-placeholder-{{ ai_gen_id }}">
+            Video 2
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="ai-video-gallery-item-{{ ai_gen_id }}">
+        {% if video_3 != blank %}
+          <video
+            class="ai-video-gallery-video-{{ ai_gen_id }}"
+            src="{{ video_3 }}"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+          ></video>
+        {% else %}
+          <div class="ai-video-gallery-placeholder-{{ ai_gen_id }}">
+            Video 3
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</product-video-gallery-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class ProductVideoGallery{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.videos = this.querySelectorAll('.ai-video-gallery-video-{{ ai_gen_id }}');
+        this.setupVideoPlayback();
+        this.setupIntersectionObserver();
+      }
+
+      setupVideoPlayback() {
+        this.videos.forEach((video) => {
+          video.addEventListener('loadedmetadata', () => {
+            video.play().catch(() => {});
+          });
+        });
+      }
+
+      setupIntersectionObserver() {
+        const options = {
+          root: null,
+          rootMargin: '0px',
+          threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            const video = entry.target;
+            if (entry.isIntersecting) {
+              video.play().catch(() => {});
+            } else {
+              video.pause();
+            }
+          });
+        }, options);
+
+        this.videos.forEach((video) => {
+          observer.observe(video);
+        });
+      }
+    }
+
+    customElements.define('product-video-gallery-{{ ai_gen_id }}', ProductVideoGallery{{ ai_gen_id }});
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Product video gallery",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "label": "Section padding",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "Desktop gap",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "aspect_ratio",
+      "label": "Desktop aspect ratio",
+      "min": 50,
+      "max": 150,
+      "step": 5,
+      "unit": "%",
+      "default": 100,
+      "info": "100% = square, 56% = 16:9, 75% = 4:3"
+    },
+    {
+      "type": "header",
+      "content": "Mobile slider"
+    },
+    {
+      "type": "range",
+      "id": "mobile_gap",
+      "label": "Mobile gap",
+      "min": 0,
+      "max": 30,
+      "step": 5,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "mobile_slide_width",
+      "label": "Mobile slide width",
+      "min": 70,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 85
+    },
+    {
+      "type": "range",
+      "id": "mobile_aspect_ratio",
+      "label": "Mobile aspect ratio",
+      "min": 50,
+      "max": 150,
+      "step": 5,
+      "unit": "%",
+      "default": 100,
+      "info": "100% = square, 56% = 16:9, 75% = 4:3"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product video gallery"
+    }
+  ]
+}
 {% endschema %}
