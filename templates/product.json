@@ -247,6 +247,20 @@
                 }
               },
               "block_order": []
+            },
+            "ai_gen_block_6df8fef_6YTHpU": {
+              "type": "ai_gen_block_6df8fef",
+              "settings": {
+                "section_padding": 40,
+                "gap": 20,
+                "border_radius": 8,
+                "aspect_ratio": 100,
+                "mobile_gap": 15,
+                "mobile_slide_width": 85,
+                "mobile_aspect_ratio": 100,
+                "desktop_width_percent": 100
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -254,7 +268,8 @@
             "divider_VJhene",
             "text_aEtTtq",
             "variant_picker_R3rGDr",
-            "buy_buttons_eYQEYi"
+            "buy_buttons_eYQEYi",
+            "ai_gen_block_6df8fef_6YTHpU"
           ]
         }
       },
