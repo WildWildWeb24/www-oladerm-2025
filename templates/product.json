@@ -251,14 +251,13 @@
             "ai_gen_block_6df8fef_6YTHpU": {
               "type": "ai_gen_block_6df8fef",
               "settings": {
-                "section_padding": 40,
-                "gap": 20,
+                "section_padding": 10,
+                "gap": 10,
                 "border_radius": 8,
                 "aspect_ratio": 100,
                 "mobile_gap": 15,
                 "mobile_slide_width": 85,
-                "mobile_aspect_ratio": 100,
-                "desktop_width_percent": 100
+                "mobile_aspect_ratio": 100
               },
               "blocks": {}
             }
