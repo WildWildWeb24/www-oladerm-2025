@@ -87,10 +87,10 @@
       %}
 
       <div class="ai-video-gallery-item-{{ ai_gen_id }}">
-        {% if video_1 != blank %}
+        {% if product.metafields.custom.video_1 %}
           <video
             class="ai-video-gallery-video-{{ ai_gen_id }}"
-            src="{{ video_1 }}"
+            src="{{ product.metafields.custom.video_1.value }}"
             autoplay
             muted
             loop
