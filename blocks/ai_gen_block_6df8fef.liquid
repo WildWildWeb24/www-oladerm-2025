@@ -80,10 +80,10 @@
 >
   <div class="ai-video-gallery-container-{{ ai_gen_id }}">
     <div class="ai-video-gallery-grid-{{ ai_gen_id }}">
-      {% liquid
-        assign video_1 = product.metafields.custom.video_1.value
-        assign video_2 = product.metafields.custom.video_2.value
-        assign video_3 = product.metafields.custom.video_3.value
+     {% liquid
+        assign video_1 = product.metafields.custom.video_1.value | file_url
+        assign video_2 = product.metafields.custom.video_2.value | file_url
+        assign video_3 = product.metafields.custom.video_3.value | file_url
       %}
 
       <div class="ai-video-gallery-item-{{ ai_gen_id }}">
