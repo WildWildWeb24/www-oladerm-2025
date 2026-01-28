@@ -288,8 +288,8 @@
     "17695823686793e755": {
       "type": "_blocks",
       "blocks": {
-        "ai_gen_block_5ffee1c_EEQAKh": {
-          "type": "ai_gen_block_5ffee1c",
+        "faq-with-video_EEQAKh": {
+          "type": "faq-with-video",
           "settings": {
             "section_padding": 40,
             "desktop_gap": 40,
@@ -325,7 +325,7 @@
         }
       },
       "block_order": [
-        "ai_gen_block_5ffee1c_EEQAKh"
+        "faq-with-video_EEQAKh"
       ],
       "disabled": true,
       "settings": {
