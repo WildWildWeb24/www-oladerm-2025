@@ -15,9 +15,10 @@
         "tile_1": {
           "type": "tile",
           "settings": {
-            "subheading": "Featured line",
-            "heading": "Sunscreen",
-            "body": "Protects your skin daily",
+            "image": "shopify://shop_images/oladerm-sunscreen.jpg",
+            "subheading": "",
+            "heading": "",
+            "body": "",
             "cta_label": "",
             "cta_link": "",
             "cta_new_tab": false,
