@@ -57,9 +57,10 @@
         "tile_4": {
           "type": "tile",
           "settings": {
-            "subheading": "Glowrevive",
-            "heading": "Cream",
-            "body": "Radiance-supporting cream for everyday",
+            "image": "shopify://shop_images/oladerm-cream.jpg",
+            "subheading": "",
+            "heading": "",
+            "body": "",
             "cta_label": "",
             "cta_link": "",
             "cta_new_tab": false,
