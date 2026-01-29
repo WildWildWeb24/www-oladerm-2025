@@ -293,6 +293,7 @@
         "concern1": {
           "type": "concern",
           "settings": {
+            "image": "shopify://shop_images/oladerm-concern-01.jpg",
             "label": "Dry/Dehydrated Skin",
             "description": "Hydrate and lock in moisture",
             "cta_label": "Add to cart",
@@ -303,6 +304,7 @@
         "concern2": {
           "type": "concern",
           "settings": {
+            "image": "shopify://shop_images/oladerm-concern-03.jpg",
             "label": "Uneven Texture",
             "description": "Smooth and refine gently",
             "cta_label": "Add to cart",
@@ -313,6 +315,7 @@
         "concern3": {
           "type": "concern",
           "settings": {
+            "image": "shopify://shop_images/oladerm-concern-05.jpg",
             "label": "Dull, Tired Skin",
             "description": "Boost radiance daily",
             "cta_label": "Add to cart",
@@ -323,6 +326,7 @@
         "concern4": {
           "type": "concern",
           "settings": {
+            "image": "shopify://shop_images/oladerm-concern-02.jpg",
             "label": "Blemishes",
             "description": "Clarify without stripping",
             "cta_label": "Add to cart",
@@ -333,6 +337,7 @@
         "concern5": {
           "type": "concern",
           "settings": {
+            "image": "shopify://shop_images/oladerm-concern-04.jpg",
             "label": "Daily UV Exposure",
             "description": "Protect and nourish",
             "cta_label": "Add to cart",
