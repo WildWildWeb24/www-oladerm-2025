@@ -29,9 +29,10 @@
         "tile_2": {
           "type": "tile",
           "settings": {
-            "subheading": "Velvet Skin",
-            "heading": "Balm",
-            "body": "Breathable balm that heals",
+            "image": "shopify://shop_images/oladerm-skin-balm.jpg",
+            "subheading": "",
+            "heading": "",
+            "body": "",
             "cta_label": "",
             "cta_link": "",
             "cta_new_tab": false,
@@ -42,9 +43,10 @@
         "tile_3": {
           "type": "tile",
           "settings": {
-            "subheading": "SatinSkin",
-            "heading": "Cleanser",
-            "body": "Gentle cleanser that respects your skin",
+            "image": "shopify://shop_images/oladerm-cleanser.jpg",
+            "subheading": "",
+            "heading": "",
+            "body": "",
             "cta_label": "",
             "cta_link": "",
             "cta_new_tab": false,
