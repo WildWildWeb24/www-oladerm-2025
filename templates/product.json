@@ -204,7 +204,7 @@
               "type": "custom-liquid",
               "name": "t:names.custom_liquid",
               "settings": {
-                "custom_liquid": "<section class=\"features\">\n{{ product.metafields.custom.spec_2.value }}\n{{ product.metafields.custom.spec_1.value }}\n</section>"
+                "custom_liquid": "<section class=\"features\">\n{{ product.metafields.custom.spec_1.value }}\n{{ product.metafields.custom.spec_2.value }}\n{{ product.metafields.custom.spec_3.value }}\n</section>"
               },
               "blocks": {}
             },
