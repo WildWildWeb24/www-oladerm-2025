@@ -76,7 +76,7 @@
         "tile_4"
       ],
       "settings": {
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-2",
         "padding-block-start": 0,
         "padding-block-end": 32
       }
@@ -359,7 +359,7 @@
       "settings": {
         "heading": "Shop by concern",
         "section_width": "page-width",
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-2",
         "padding-block-start": 32,
         "padding-block-end": 32
       }
