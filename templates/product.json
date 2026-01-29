@@ -200,6 +200,14 @@
               },
               "blocks": {}
             },
+            "custom_liquid_nDHk3J": {
+              "type": "custom-liquid",
+              "name": "t:names.custom_liquid",
+              "settings": {
+                "custom_liquid": "<section class=\"features\">\n\n</section>"
+              },
+              "blocks": {}
+            },
             "variant_picker_R3rGDr": {
               "type": "variant-picker",
               "settings": {
@@ -267,6 +275,7 @@
             "group_icgrde",
             "divider_VJhene",
             "text_aEtTtq",
+            "custom_liquid_nDHk3J",
             "variant_picker_R3rGDr",
             "buy_buttons_eYQEYi",
             "ai_gen_block_6df8fef_6YTHpU"
