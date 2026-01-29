@@ -277,11 +277,14 @@
     },
     "brand_story": {
       "type": "home-brand-story",
+      "custom_css": [
+        ".home-brand-story__body {font-size: 24px; line-height: 32px;}"
+      ],
       "settings": {
         "video": "shopify://files/videos/oladerm-hero-banner-web-rez.mp4",
         "headline": "Oladerm is made to perform in real conditions.",
         "subheadline": "<p><span style=\"text-decoration:underline\">Heat</span>, <span style=\"text-decoration:underline\">humidity</span>, and <span style=\"text-decoration:underline\">daily sun exposure</span> while delivering <span style=\"text-decoration:underline\">effective</span>, <span style=\"text-decoration:underline\">reliable</span> <span style=\"text-decoration:underline\">care</span> your <span style=\"text-decoration:underline\">skin</span> can <span style=\"text-decoration:underline\">trust</span>.</p>",
-        "body": "<p>Products are free from added fragrance and unnecessary chemicals, making them gentle enough for sensitive and reactive skin. Each formula is dermatologically tested, pH balanced, and designed to support the skin’s natural barrier.</p>",
+        "body": "<p>Thoughtfully formulated with skin-first principles at its core. Our products are free from added fragrance and over 2000 harsh or unnecessary chemicals, making them gentle enough for sensitive and reactive skin. Each formula is dermatologically tested, pH balanced, and designed to support the skin’s natural barrier without irritation. Carefully developed for everyday use.</p>",
         "color_scheme": "scheme-3",
         "padding-block-start": 48,
         "padding-block-end": 48
