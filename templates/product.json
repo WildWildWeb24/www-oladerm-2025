@@ -203,6 +203,7 @@
             "custom_liquid_nDHk3J": {
               "type": "custom-liquid",
               "name": "t:names.custom_liquid",
+              "disabled": true,
               "settings": {
                 "custom_liquid": "<section class=\"features\">\n{{ product.metafields.custom.spec_1.value }}\n{{ product.metafields.custom.spec_2.value }}\n{{ product.metafields.custom.spec_3.value }}\n</section>"
               },
