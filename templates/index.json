@@ -353,6 +353,9 @@
         "concern4",
         "concern5"
       ],
+      "custom_css": [
+        "h2 {font-size: 32px;}"
+      ],
       "settings": {
         "heading": "Shop by concern",
         "section_width": "page-width",
