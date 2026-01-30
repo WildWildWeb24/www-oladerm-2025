@@ -355,6 +355,32 @@
               },
               "blocks": {}
             },
+            "text_MrnFcW": {
+              "type": "text",
+              "name": "t:names.text",
+              "settings": {
+                "text": "<p><strong>FOLLOW US</strong></p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 14,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
             "social_links_3gPd8d": {
               "type": "social-links",
               "name": "t:names.social_media_links",
@@ -378,6 +404,7 @@
           },
           "block_order": [
             "menu_K4EQzR",
+            "text_MrnFcW",
             "social_links_3gPd8d"
           ]
         },
