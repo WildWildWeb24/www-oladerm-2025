@@ -354,10 +354,31 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
+            },
+            "social_links_3gPd8d": {
+              "type": "social-links",
+              "name": "t:names.social_media_links",
+              "settings": {
+                "facebook_url": "#",
+                "instagram_url": "#",
+                "youtube_url": "#",
+                "tiktok_url": "",
+                "twitter_url": "",
+                "threads_url": "",
+                "linkedin_url": "",
+                "bluesky_url": "",
+                "snapchat_url": "",
+                "pinterest_url": "",
+                "tumblr_url": "",
+                "vimeo_url": "",
+                "custom_url": ""
+              },
+              "blocks": {}
             }
           },
           "block_order": [
-            "menu_K4EQzR"
+            "menu_K4EQzR",
+            "social_links_3gPd8d"
           ]
         },
         "email_signup_g7888V": {
