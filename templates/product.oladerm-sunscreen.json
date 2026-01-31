@@ -324,11 +324,11 @@
             "answer_4": "Formulated with UV filters for protection, olive squalane and shea butter for hydration, and vitamin E to support skin against free-radical damage.",
             "question_5": "When will I see results?",
             "answer_5": "Protection begins immediately upon application. With consistent daily use, skin feels more comfortable and protected over time.",
-            "gap": 20,
+            "gap": 10,
             "border_radius": 8,
-            "aspect_ratio": 100,
+            "aspect_ratio": 150,
             "mobile_slide_width": 85,
-            "mobile_aspect_ratio": 100
+            "mobile_aspect_ratio": 150
           },
           "blocks": {}
         }
