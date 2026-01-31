@@ -1,38 +1,25 @@
 {% comment %}
-  Oladerm — Single Product + Banner (2-col)
-  Left: product card pulled from selected product
-  Right: banner (image + overlay text)
+  Oladerm — Single Product + Banner (Blocks)
+  Left: one product card (pulled from selected product)
+  Right: banner (image + overlay content)
 {% endcomment %}
 
-{{ 'component-price.css' | asset_url | stylesheet_tag }}
-
-{% liquid
+{%- liquid
   assign s = section.settings
   assign product = s.product
-  assign container_class = s.fit_container | default: true
 
   if s.fit_container
     assign wrap_class = 'page-width'
   else
     assign wrap_class = 'oladerm-spb__full'
   endif
-%}
+-%}
 
 <section id="oladerm-spb-{{ section.id }}" class="oladerm-spb">
   <div class="{{ wrap_class }}">
-    {% if s.show_collection_header %}
-      <header class="oladerm-spb__header">
-        {% if s.concern_title != blank %}
-          <h1 class="oladerm-spb__title">{{ s.concern_title }}</h1>
-        {% endif %}
-        {% if s.concern_text != blank %}
-          <div class="oladerm-spb__intro rte">{{ s.concern_text }}</div>
-        {% endif %}
-      </header>
-    {% endif %}
-
     <div class="oladerm-spb__grid">
-      <!-- LEFT: SINGLE PRODUCT -->
+
+      <!-- LEFT: PRODUCT -->
       <div class="oladerm-spb__left">
         {% if product != blank %}
           {% assign current_variant = product.selected_or_first_available_variant %}
@@ -40,9 +27,9 @@
           <div class="oladerm-spb__card">
             <a class="oladerm-spb__media" href="{{ product.url }}">
               {% if product.featured_image %}
-                {{ product.featured_image | image_url: width: 1200 | image_tag:
+                {{ product.featured_image | image_url: width: 1400 | image_tag:
                   loading: 'lazy',
-                  widths: '360, 540, 720, 900, 1080, 1200',
+                  widths: '360, 540, 720, 900, 1100, 1400',
                   sizes: '(min-width: 990px) 520px, 100vw',
                   alt: product.title
                 }}
@@ -52,77 +39,90 @@
             </a>
 
             <div class="oladerm-spb__content">
-              <div class="oladerm-spb__top">
-                <h2 class="oladerm-spb__productTitle">
-                  <a href="{{ product.url }}">{{ product.title }}</a>
-                </h2>
+              {% for block in section.blocks %}
+                {% case block.type %}
 
-                {% if s.product_tagline != blank %}
-                  <p class="oladerm-spb__tagline">{{ s.product_tagline }}</p>
-                {% endif %}
+                  {% when 'product_header' %}
+                    <div class="oladerm-spb__block" {{ block.shopify_attributes }}>
+                      <h2 class="oladerm-spb__productTitle">
+                        <a href="{{ product.url }}">{{ product.title }}</a>
+                      </h2>
 
-                <div class="oladerm-spb__price">
-                  {% if current_variant.compare_at_price > current_variant.price %}
-                    <span class="oladerm-spb__price--compare">
-                      {{ current_variant.compare_at_price | money }}
-                    </span>
-                  {% endif %}
-                  <span class="oladerm-spb__price--current">
-                    {{ current_variant.price | money }}
-                  </span>
-                </div>
+                      {% if block.settings.tagline != blank %}
+                        <p class="oladerm-spb__tagline">{{ block.settings.tagline }}</p>
+                      {% endif %}
 
-                {% if s.benefit_1 != blank or s.benefit_2 != blank or s.benefit_3 != blank %}
-                  <ul class="oladerm-spb__bullets">
-                    {% if s.benefit_1 != blank %}<li>{{ s.benefit_1 }}</li>{% endif %}
-                    {% if s.benefit_2 != blank %}<li>{{ s.benefit_2 }}</li>{% endif %}
-                    {% if s.benefit_3 != blank %}<li>{{ s.benefit_3 }}</li>{% endif %}
-                  </ul>
-                {% endif %}
-              </div>
+                      {% if block.settings.show_price %}
+                        <div class="oladerm-spb__price">
+                          {% if current_variant.compare_at_price > current_variant.price %}
+                            <span class="oladerm-spb__price--compare">
+                              {{ current_variant.compare_at_price | money }}
+                            </span>
+                          {% endif %}
+                          <span class="oladerm-spb__price--current">
+                            {{ current_variant.price | money }}
+                          </span>
+                        </div>
+                      {% endif %}
+                    </div>
 
-              <div class="oladerm-spb__actions">
-                {% form 'product', product, class: 'oladerm-spb__form' %}
-                  <input type="hidden" name="id" value="{{ current_variant.id }}">
-                  <input type="hidden" name="quantity" value="1">
+                  {% when 'benefit_bullets' %}
+                    <div class="oladerm-spb__block" {{ block.shopify_attributes }}>
+                      {% if block.settings.b1 != blank or block.settings.b2 != blank or block.settings.b3 != blank %}
+                        <ul class="oladerm-spb__bullets">
+                          {% if block.settings.b1 != blank %}<li>{{ block.settings.b1 }}</li>{% endif %}
+                          {% if block.settings.b2 != blank %}<li>{{ block.settings.b2 }}</li>{% endif %}
+                          {% if block.settings.b3 != blank %}<li>{{ block.settings.b3 }}</li>{% endif %}
+                        </ul>
+                      {% endif %}
+                    </div>
 
-                  <button
-                    type="submit"
-                    name="add"
-                    class="oladerm-spb__atc"
-                    {% unless current_variant.available %}disabled{% endunless %}
-                  >
-                    {% if current_variant.available %}
-                      {{ s.atc_label | default: 'Add to cart' }}
-                    {% else %}
-                      Sold out
-                    {% endif %}
-                  </button>
-                {% endform %}
+                  {% when 'atc' %}
+                    <div class="oladerm-spb__block oladerm-spb__actions" {{ block.shopify_attributes }}>
+                      {% form 'product', product, class: 'oladerm-spb__form' %}
+                        <input type="hidden" name="id" value="{{ current_variant.id }}">
+                        <input type="hidden" name="quantity" value="1">
 
-                {% if s.show_view_product %}
-                  <a class="oladerm-spb__link" href="{{ product.url }}">
-                    {{ s.view_label | default: 'View product' }}
-                  </a>
-                {% endif %}
-              </div>
+                        <button
+                          type="submit"
+                          name="add"
+                          class="oladerm-spb__atc"
+                          {% unless current_variant.available %}disabled{% endunless %}
+                        >
+                          {% if current_variant.available %}
+                            {{ block.settings.atc_label | default: 'ADD TO CART' }}
+                          {% else %}
+                            Sold out
+                          {% endif %}
+                        </button>
+                      {% endform %}
+
+                      {% if block.settings.show_view_product %}
+                        <a class="oladerm-spb__link" href="{{ product.url }}">
+                          {{ block.settings.view_label | default: 'View product' }}
+                        </a>
+                      {% endif %}
+                    </div>
+
+                {% endcase %}
+              {% endfor %}
             </div>
           </div>
 
         {% else %}
           <div class="oladerm-spb__empty">
-            Select a product in this section’s settings.
+            Select a product in this section settings.
           </div>
         {% endif %}
       </div>
 
       <!-- RIGHT: BANNER -->
       <div class="oladerm-spb__right">
-        <div class="oladerm-spb__banner" style="--overlay: {{ s.banner_overlay | default: 0.25 }};">
+        <div class="oladerm-spb__banner" style="--overlay: {{ s.banner_overlay }};">
           {% if s.banner_image != blank %}
-            {{ s.banner_image | image_url: width: 2000 | image_tag:
+            {{ s.banner_image | image_url: width: 2200 | image_tag:
               loading: 'lazy',
-              widths: '750, 1100, 1500, 2000',
+              widths: '750, 1100, 1500, 2000, 2200',
               sizes: '(min-width: 990px) 50vw, 100vw',
               alt: s.banner_heading
             }}
@@ -147,16 +147,16 @@
           {% endif %}
         </div>
       </div>
-    </div>
 
+    </div>
   </div>
 </section>
 
 <style>
   #oladerm-spb-{{ section.id }} {
     --radius: 14px;
-    --border: rgba(0,0,0,.08);
-    --text: rgba(0,0,0,.86);
+    --border: rgba(0,0,0,.10);
+    --text: rgba(0,0,0,.88);
     --muted: rgba(0,0,0,.62);
     --bg: {{ section.settings.card_bg }};
     --btn: {{ section.settings.button_bg }};
@@ -165,16 +165,13 @@
   }
 
   #oladerm-spb-{{ section.id }} .oladerm-spb__full { width: 100%; padding-left: 24px; padding-right: 24px; }
-  #oladerm-spb-{{ section.id }} .oladerm-spb__header { padding: 28px 0 18px; }
-  #oladerm-spb-{{ section.id }} .oladerm-spb__title { margin: 0 0 10px; color: var(--text); }
-  #oladerm-spb-{{ section.id }} .oladerm-spb__intro { color: var(--muted); max-width: 900px; }
 
   #oladerm-spb-{{ section.id }} .oladerm-spb__grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--gap);
     align-items: start;
-    padding: 18px 0 40px;
+    padding: 22px 0 40px;
   }
 
   #oladerm-spb-{{ section.id }} .oladerm-spb__card {
@@ -199,11 +196,13 @@
   }
 
   #oladerm-spb-{{ section.id }} .oladerm-spb__content { padding: 18px 18px 16px; }
+  #oladerm-spb-{{ section.id }} .oladerm-spb__block + .oladerm-spb__block { margin-top: 14px; }
+
   #oladerm-spb-{{ section.id }} .oladerm-spb__productTitle { margin: 0 0 6px; font-size: 28px; line-height: 1.15; }
   #oladerm-spb-{{ section.id }} .oladerm-spb__productTitle a { color: var(--text); text-decoration: none; }
-  #oladerm-spb-{{ section.id }} .oladerm-spb__tagline { margin: 0 0 12px; color: var(--muted); }
+  #oladerm-spb-{{ section.id }} .oladerm-spb__tagline { margin: 0 0 10px; color: var(--muted); }
 
-  #oladerm-spb-{{ section.id }} .oladerm-spb__price { display:flex; gap: 10px; align-items: baseline; margin: 0 0 14px; }
+  #oladerm-spb-{{ section.id }} .oladerm-spb__price { display:flex; gap: 10px; align-items: baseline; margin: 0; }
   #oladerm-spb-{{ section.id }} .oladerm-spb__price--compare { color: rgba(0,0,0,.45); text-decoration: line-through; }
   #oladerm-spb-{{ section.id }} .oladerm-spb__price--current { color: var(--text); font-weight: 600; }
 
@@ -216,7 +215,6 @@
   }
 
   #oladerm-spb-{{ section.id }} .oladerm-spb__actions {
-    margin-top: 16px;
     display: flex;
     align-items: center;
     gap: 14px;
@@ -228,11 +226,12 @@
     border: 0;
     border-radius: 999px;
     padding: 12px 18px;
-    min-width: 200px;
+    min-width: 220px;
     background: var(--btn);
     color: var(--btnText);
     cursor: pointer;
-    font-weight: 600;
+    font-weight: 700;
+    letter-spacing: .02em;
   }
   #oladerm-spb-{{ section.id }} .oladerm-spb__atc[disabled] { opacity: .6; cursor: not-allowed; }
 
@@ -249,19 +248,16 @@
     overflow: hidden;
     border: 1px solid var(--border);
     background: rgba(0,0,0,.03);
-    min-height: 100%;
   }
-
   #oladerm-spb-{{ section.id }} .oladerm-spb__banner img {
     width: 100%;
     height: 100%;
-    min-height: 520px;
+    min-height: 560px;
     object-fit: cover;
     display: block;
   }
-
   #oladerm-spb-{{ section.id }} .oladerm-spb__bannerFallback {
-    min-height: 520px;
+    min-height: 560px;
     background: linear-gradient(135deg, rgba(0,0,0,.04), rgba(0,0,0,.02));
   }
 
@@ -286,7 +282,7 @@
     background: rgba(255,255,255,.92);
     color: #111;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 700;
     margin-top: 8px;
   }
 
@@ -298,7 +294,6 @@
     background: rgba(0,0,0,.02);
   }
 
-  /* Mobile */
   @media (max-width: 989px) {
     #oladerm-spb-{{ section.id }} .oladerm-spb__grid {
       grid-template-columns: 1fr;
@@ -309,7 +304,7 @@
       min-height: 320px;
     }
     #oladerm-spb-{{ section.id }} .oladerm-spb__productTitle { font-size: 22px; }
-    #oladerm-spb-{{ section.id }} .oladerm-spb__atc { width: 100%; }
+    #oladerm-spb-{{ section.id }} .oladerm-spb__atc { width: 100%; min-width: unset; }
   }
 </style>
 
@@ -323,45 +318,21 @@
       "label": "Fit into container (page width)",
       "default": true
     },
-    {
-      "type": "checkbox",
-      "id": "show_collection_header",
-      "label": "Show top header (concern title + intro)",
-      "default": true
-    },
-    {
-      "type": "text",
-      "id": "concern_title",
-      "label": "Concern title",
-      "default": "Dry & Dehydrated Skin"
-    },
-    {
-      "type": "richtext",
-      "id": "concern_text",
-      "label": "Concern intro text",
-      "default": "<p>Short 1–2 line intro explaining the concern. Keep it calm and simple.</p>"
-    },
 
-    { "type": "header", "content": "Left: Product" },
+    {
+      "type": "header",
+      "content": "Product"
+    },
     {
       "type": "product",
       "id": "product",
       "label": "Choose product"
     },
-    {
-      "type": "text",
-      "id": "product_tagline",
-      "label": "Short benefit line",
-      "default": "Restores moisture and prevents dryness"
-    },
-    { "type": "text", "id": "benefit_1", "label": "Key benefit 1", "default": "Deep hydration & nourishment" },
-    { "type": "text", "id": "benefit_2", "label": "Key benefit 2", "default": "Strengthens the skin barrier" },
-    { "type": "text", "id": "benefit_3", "label": "Key benefit 3", "default": "Prevents dryness or tightness" },
-    { "type": "text", "id": "atc_label", "label": "Add to cart label", "default": "ADD TO CART" },
-    { "type": "checkbox", "id": "show_view_product", "label": "Show “View product” link", "default": false },
-    { "type": "text", "id": "view_label", "label": "View product label", "default": "View product" },
 
-    { "type": "header", "content": "Right: Banner" },
+    {
+      "type": "header",
+      "content": "Banner"
+    },
     {
       "type": "image_picker",
       "id": "banner_image",
@@ -380,13 +351,13 @@
       "type": "text",
       "id": "banner_heading",
       "label": "Banner heading",
-      "default": "Barrier care, made simple"
+      "default": "Banner heading"
     },
     {
       "type": "text",
       "id": "banner_text",
       "label": "Banner text",
-      "default": "Lightweight hydration that feels comfortable all day."
+      "default": "Banner text"
     },
     {
       "type": "text",
@@ -400,7 +371,10 @@
       "label": "Banner button link"
     },
 
-    { "type": "header", "content": "Style" },
+    {
+      "type": "header",
+      "content": "Style"
+    },
     {
       "type": "color",
       "id": "card_bg",
@@ -420,9 +394,45 @@
       "default": "#ffffff"
     }
   ],
+  "blocks": [
+    {
+      "type": "product_header",
+      "name": "Product header",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "tagline", "label": "Short benefit line", "default": "Short benefit line" },
+        { "type": "checkbox", "id": "show_price", "label": "Show price", "default": true }
+      ]
+    },
+    {
+      "type": "benefit_bullets",
+      "name": "Benefit bullets",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "b1", "label": "Benefit 1", "default": "Key benefit 1" },
+        { "type": "text", "id": "b2", "label": "Benefit 2", "default": "Key benefit 2" },
+        { "type": "text", "id": "b3", "label": "Benefit 3", "default": "Key benefit 3" }
+      ]
+    },
+    {
+      "type": "atc",
+      "name": "Add to cart",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "atc_label", "label": "Button label", "default": "ADD TO CART" },
+        { "type": "checkbox", "id": "show_view_product", "label": "Note: show View product link", "default": false },
+        { "type": "text", "id": "view_label", "label": "View product label", "default": "View product" }
+      ]
+    }
+  ],
   "presets": [
     {
-      "name": "Oladerm — Single product"
+      "name": "Oladerm — Single product",
+      "blocks": [
+        { "type": "product_header" },
+        { "type": "benefit_bullets" },
+        { "type": "atc" }
+      ]
     }
   ]
 }
