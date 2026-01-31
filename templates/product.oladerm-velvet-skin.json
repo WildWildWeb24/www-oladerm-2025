@@ -324,11 +324,11 @@
             "answer_4": "Formulated with niacinamide for texture, shea butter for nourishment, sodium hyaluronate for hydration, vitamin E, and allantoin for soothing care.",
             "question_5": "When will I see results?",
             "answer_5": "Skin feels softer and more comfortable immediately. With regular use, texture and hydration improve over time.",
-            "gap": 20,
+            "gap": 10,
             "border_radius": 8,
-            "aspect_ratio": 100,
+            "aspect_ratio": 150,
             "mobile_slide_width": 85,
-            "mobile_aspect_ratio": 100
+            "mobile_aspect_ratio": 150
           },
           "blocks": {}
         }
