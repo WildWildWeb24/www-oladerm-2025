@@ -324,11 +324,11 @@
             "answer_4": "Uses mild, non-irritating cleansers with glycerin and shea butter to cleanse while maintaining moisture balance.",
             "question_5": "When will I see results?",
             "answer_5": "Skin feels clean, comfortable, and refreshed from the first wash. Continued use supports healthier-looking skin.",
-            "gap": 20,
+            "gap": 10,
             "border_radius": 8,
-            "aspect_ratio": 100,
+            "aspect_ratio": 150,
             "mobile_slide_width": 85,
-            "mobile_aspect_ratio": 100
+            "mobile_aspect_ratio": 150
           },
           "blocks": {}
         }
