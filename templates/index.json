@@ -366,12 +366,60 @@
         "padding-block-start": 32,
         "padding-block-end": 32
       }
+    },
+    "oladerm_product_hero_yzgWaT": {
+      "type": "oladerm-product-hero",
+      "blocks": {
+        "benefit_GEeCAg": {
+          "type": "benefit",
+          "settings": {
+            "icon": "shopify://shop_images/oladerm-usp-2.png",
+            "title": "Gentle on skin",
+            "text": "Cleans without irritation or stripping"
+          }
+        },
+        "benefit_BmjYHD": {
+          "type": "benefit",
+          "settings": {
+            "icon": "shopify://shop_images/oladerm-usp-1.png",
+            "title": "Gentle on skin",
+            "text": "Cleans without irritation or stripping"
+          }
+        },
+        "benefit_KcnEi9": {
+          "type": "benefit",
+          "settings": {
+            "icon": "shopify://shop_images/oladerm-usp-3.png",
+            "title": "Gentle on skin",
+            "text": "Cleans without irritation or stripping"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_GEeCAg",
+        "benefit_BmjYHD",
+        "benefit_KcnEi9"
+      ],
+      "name": "Oladerm - Product Hero",
+      "settings": {
+        "container": "contained",
+        "product": "velvet-skin-balm-moisture-lock-100ml",
+        "default_media_position": "featured",
+        "badge_text": "Skin Balm",
+        "pill_1": "Vitamin C",
+        "pill_2": "Skincare",
+        "tax_note": "Taxes included",
+        "primary_cta_label": "View Products",
+        "primary_cta_link": "",
+        "add_to_cart_label": "Add to Cart"
+      }
     }
   },
   "order": [
     "hero_grid",
     "shop_range",
     "brand_story",
-    "concern_row"
+    "concern_row",
+    "oladerm_product_hero_yzgWaT"
   ]
 }
