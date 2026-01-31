@@ -1,21 +1,18 @@
 {% comment %}
-  Oladerm – Product Hero (Gallery + Benefits)
+  OLADERM – Product Hero Section (Gallery + Product Info + Benefits + CTAs)
 
-  Product data source:
-  - Defaults to the CURRENT product (on product page)
-  - Or you can pick a product in section settings (useful on home/collection pages)
+  Features:
+  1) "Fit into container" option (Contained / Full width)
+  2) Pulls all data from product (title, price, description, media)
+  3) Optional: choose product in section settings (for non-product pages)
 
   Optional product metafields (namespace: custom):
-  - custom.hero_badge_text (single line text)  -> e.g. "Gentle Daily Cleanser"
-  - custom.hero_pill_1 (single line text)      -> e.g. "Restores skin"
-  - custom.hero_pill_2 (single line text)      -> e.g. "Vitamin C"
+  - custom.hero_badge_text  (single line text)  e.g. "Gentle Daily Cleanser"
+  - custom.hero_pill_1      (single line text)  e.g. "Restores skin"
+  - custom.hero_pill_2      (single line text)  e.g. "Vitamin C"
 
-  Benefits (you can either use section blocks OR metafields):
-  - custom.benefit_1_title (text)
-  - custom.benefit_1_text (text)
-  - custom.benefit_1_image (file_reference)
-  - custom.benefit_2_title, custom.benefit_2_text, custom.benefit_2_image
-  - custom.benefit_3_title, custom.benefit_3_text, custom.benefit_3_image
+  Benefits:
+  - Use section blocks (recommended). Add 3 blocks.
 {% endcomment %}
 
 {%- liquid
@@ -56,8 +53,6 @@
   if pill_2 == blank and p != nil
     assign pill_2 = p.metafields.custom.hero_pill_2.value
   endif
-
-  assign tax_note = section.settings.tax_note
 -%}
 
 <section class="oladerm-hero" data-section-id="{{ section.id }}">
@@ -76,18 +71,17 @@
             {%- for m in p.media -%}
               {%- if m.media_type == 'image' -%}
                 <button
-                  class="oladerm__thumb{% if m.id == featured_media.id %} is-active{% endif %}"
+                  class="oladerm__thumb{% if featured_media and m.id == featured_media.id %} is-active{% endif %}"
                   type="button"
                   aria-label="View image {{ forloop.index }}"
-                  data-target-media-id="{{ m.id }}"
-                  data-target-src="{{ m | image_url: width: 1400 }}"
+                  data-target-src="{{ m | image_url: width: 1600 }}"
                 >
                   <img
-                    src="{{ m | image_url: width: 160 }}"
+                    src="{{ m | image_url: width: 180 }}"
                     alt="{{ m.alt | escape }}"
                     loading="lazy"
-                    width="80"
-                    height="80"
+                    width="90"
+                    height="90"
                   >
                 </button>
               {%- endif -%}
@@ -99,11 +93,11 @@
               {% if featured_media and featured_media.media_type == 'image' %}
                 <img
                   class="oladerm__main-img"
-                  src="{{ featured_media | image_url: width: 1400 }}"
+                  src="{{ featured_media | image_url: width: 1600 }}"
                   alt="{{ featured_media.alt | escape }}"
                   loading="lazy"
-                  width="900"
-                  height="900"
+                  width="1200"
+                  height="1200"
                 >
               {% endif %}
 
@@ -132,9 +126,10 @@
               <div class="oladerm__price-amount">
                 {{ p.selected_or_first_available_variant.price | money }}
               </div>
-              {% if tax_note != blank %}
-                <div class="oladerm__price-sub">{{ tax_note }}</div>
-              {% endif %}
+
+              <div class="oladerm__price-sub">
+                {{ section.settings.tax_note }}
+              </div>
             </div>
           </div>
 
@@ -146,79 +141,40 @@
             </div>
           {% endif %}
 
-          <!-- Benefits -->
+          <!-- Benefits (matches your 2nd screenshot) -->
           <div class="oladerm__benefits">
-            {%- if section.blocks.size > 0 -%}
-              {%- for block in section.blocks -%}
-                {%- if block.type == 'benefit' -%}
-                  <div class="oladerm__benefit" {{ block.shopify_attributes }}>
-                    <div class="oladerm__benefit-icon">
-                      {%- if block.settings.icon != blank -%}
-                        <img
-                          src="{{ block.settings.icon | image_url: width: 160 }}"
-                          alt="{{ block.settings.title | escape }}"
-                          loading="lazy"
-                          width="64"
-                          height="64"
-                        >
-                      {%- endif -%}
-                    </div>
-                    <div class="oladerm__benefit-text">
-                      {% if block.settings.title != blank %}
-                        <div class="oladerm__benefit-title">{{ block.settings.title }}</div>
-                      {% endif %}
-                      {% if block.settings.text != blank %}
-                        <div class="oladerm__benefit-sub">{{ block.settings.text }}</div>
-                      {% endif %}
-                    </div>
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'benefit' -%}
+                <div class="oladerm__benefit" {{ block.shopify_attributes }}>
+                  <div class="oladerm__benefit-icon">
+                    {%- if block.settings.icon != blank -%}
+                      <img
+                        src="{{ block.settings.icon | image_url: width: 200 }}"
+                        alt="{{ block.settings.title | escape }}"
+                        loading="lazy"
+                        width="80"
+                        height="80"
+                      >
+                    {%- endif -%}
                   </div>
-                {%- endif -%}
-              {%- endfor -%}
-            {%- else -%}
-              {%- comment -%} Metafield fallback: 3 items {%- endcomment -%}
-              {%- for i in (1..3) -%}
-                {%- liquid
-                  assign t_key = 'benefit_' | append: i | append: '_title'
-                  assign d_key = 'benefit_' | append: i | append: '_text'
-                  assign img_key = 'benefit_' | append: i | append: '_image'
 
-                  assign b_title = p.metafields.custom[t_key].value
-                  assign b_text  = p.metafields.custom[d_key].value
-                  assign b_img   = p.metafields.custom[img_key].value
-                -%}
-
-                {% if b_title != blank or b_text != blank or b_img != blank %}
-                  <div class="oladerm__benefit">
-                    <div class="oladerm__benefit-icon">
-                      {% if b_img != blank %}
-                        <img
-                          src="{{ b_img | image_url: width: 160 }}"
-                          alt="{{ b_title | escape }}"
-                          loading="lazy"
-                          width="64"
-                          height="64"
-                        >
-                      {% endif %}
-                    </div>
-                    <div class="oladerm__benefit-text">
-                      {% if b_title != blank %}
-                        <div class="oladerm__benefit-title">{{ b_title }}</div>
-                      {% endif %}
-                      {% if b_text != blank %}
-                        <div class="oladerm__benefit-sub">{{ b_text }}</div>
-                      {% endif %}
-                    </div>
+                  <div class="oladerm__benefit-title">
+                    {{ block.settings.title }}
                   </div>
-                {% endif %}
-              {%- endfor -%}
-            {%- endif -%}
+
+                  <div class="oladerm__benefit-sub">
+                    {{ block.settings.text }}
+                  </div>
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
           </div>
 
           <!-- CTAs -->
           <div class="oladerm__ctas">
             {% if section.settings.primary_cta_label != blank %}
               <a class="oladerm__btn oladerm__btn--primary"
-                 href="{{ section.settings.primary_cta_link | default: routes.all_products_collection_url }}">
+                href="{{ section.settings.primary_cta_link | default: routes.all_products_collection_url }}">
                 {{ section.settings.primary_cta_label }}
               </a>
             {% endif %}
@@ -234,14 +190,16 @@
               </button>
             </form>
           </div>
-        </div>
 
+        </div>
       </div>
+
     {% endif %}
   </div>
 
   <style>
     .oladerm-hero { padding: 28px 0; }
+
     .oladerm__container { max-width: 1200px; margin: 0 auto; padding: 0 18px; }
     .oladerm__container--full { max-width: none; padding: 0 24px; }
 
@@ -252,6 +210,7 @@
       align-items: start;
     }
 
+    /* Gallery */
     .oladerm__gallery {
       display: grid;
       grid-template-columns: 92px 1fr;
@@ -259,12 +218,7 @@
       align-items: start;
     }
 
-    .oladerm__thumbs {
-      display: grid;
-      gap: 12px;
-      align-content: start;
-    }
-
+    .oladerm__thumbs { display: grid; gap: 12px; align-content: start; }
     .oladerm__thumb {
       border: 0;
       background: transparent;
@@ -314,6 +268,7 @@
       font-weight: 600;
     }
 
+    /* Content */
     .oladerm__content { padding-top: 6px; }
 
     .oladerm__badge {
@@ -360,42 +315,46 @@
       margin-bottom: 18px;
     }
 
-    .oladerm__benefit {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 12px;
-    }
-
-
-    .oladerm__benefit {
+    /* ✅ BENEFITS: matches your 2nd image */
+    .oladerm__benefits {
       display: grid;
-      grid-template-columns: 64px 1fr;
-      gap: 12px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px;
+      align-items: start;
+      margin: 28px 0 28px;
+    }
+
+    .oladerm__benefit {
+      display: flex;
+      flex-direction: column;
       align-items: center;
+      text-align: center;
     }
+
+    .oladerm__benefit-icon { margin-bottom: 16px; }
     .oladerm__benefit-icon img {
-      width: 56px;
-      height: 56px;
-      border-radius: 999px;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
       object-fit: cover;
-      display:block;
+      display: block;
     }
+
     .oladerm__benefit-title {
-        font-weight: 800;
-        font-size: 20px;
-        line-height: 1.2;
-        margin-bottom: 4px;
+      font-weight: 800;
+      font-size: 30px;
+      line-height: 1.1;
+      margin-bottom: 10px;
     }
 
     .oladerm__benefit-sub {
-        font-size: 14px;
-        line-height: 1.5;
-        opacity: 0.75;
-        max-width: 240px;
+      font-size: 18px;
+      line-height: 1.4;
+      opacity: 0.75;
+      max-width: 280px;
     }
 
+    /* CTAs */
     .oladerm__ctas { display: grid; gap: 14px; }
     .oladerm__btn {
       display: inline-flex;
@@ -411,23 +370,17 @@
       transition: transform .15s ease, opacity .15s ease;
     }
     .oladerm__btn:hover { transform: translateY(-1px); }
-    .oladerm__btn--primary {
-      background: #a26e46;
-      color: #fff;
-    }
-    .oladerm__btn--secondary {
-      background: transparent;
-      color: #3a2a1e;
-      border-color: rgba(162,110,70,0.45);
-    }
+    .oladerm__btn--primary { background: #a26e46; color: #fff; }
+    .oladerm__btn--secondary { background: transparent; color: #3a2a1e; border-color: rgba(162,110,70,0.45); }
     .oladerm__btn[disabled] { opacity: 0.5; cursor: not-allowed; }
 
     .oladerm__add-form { margin: 0; }
 
-    /* Mobile */
+    /* Responsive */
     @media (max-width: 990px) {
       .oladerm__grid { grid-template-columns: 1fr; gap: 22px; }
       .oladerm__gallery { grid-template-columns: 1fr; }
+
       .oladerm__thumbs {
         order: 2;
         grid-auto-flow: column;
@@ -436,22 +389,22 @@
         gap: 12px;
         padding-bottom: 8px;
       }
+
       .oladerm__main { order: 1; min-height: 420px; }
       .oladerm__main-img { min-height: 420px; }
 
-      .oladerm__title-row { align-items: baseline; }
       .oladerm__title { font-size: 34px; }
-      .oladerm__benefits { grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px; }
-      .oladerm__benefit { grid-template-columns: 1fr; text-align:center; }
-      .oladerm__benefit-icon { display:flex; justify-content:center; }
-      .oladerm__benefit-sub { margin: 0 auto; }
-    }
-
-    @media (max-width: 560px) {
-      .oladerm__benefits { grid-template-columns: 1fr; }
       .oladerm__price { text-align: left; }
       .oladerm__title-row { flex-direction: column; gap: 10px; }
-      .oladerm__main { border-radius: 26px; }
+    }
+
+    @media (max-width: 768px) {
+      .oladerm__benefits {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .oladerm__benefit-title { font-size: 28px; }
+      .oladerm__benefit-sub { font-size: 17px; }
     }
 
     .oladerm__empty {
@@ -479,8 +432,6 @@
 
           thumbs.forEach(function(b){ b.classList.remove('is-active'); });
           btn.classList.add('is-active');
-
-          // swap main image
           mainImg.setAttribute('src', src);
         });
       });
@@ -529,14 +480,14 @@
       "type": "text",
       "id": "pill_1",
       "label": "Image pill 1 (optional)",
-      "default": "pill_1",
+      "default": "pill 1",
       "info": "If empty, will try product metafield custom.hero_pill_1"
     },
     {
       "type": "text",
       "id": "pill_2",
       "label": "Image pill 2 (optional)",
-      "default": "pill_1",
+      "default": "pill 1",
       "info": "If empty, will try product metafield custom.hero_pill_2"
     },
     {
@@ -569,23 +520,9 @@
       "name": "Benefit",
       "limit": 3,
       "settings": [
-        {
-          "type": "image_picker",
-          "id": "icon",
-          "label": "Icon image (circle)"
-        },
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Title",
-          "default": "Gentle on skin"
-        },
-        {
-          "type": "text",
-          "id": "text",
-          "label": "Text",
-          "default": "Cleans without irritation or stripping"
-        }
+        { "type": "image_picker", "id": "icon", "label": "Icon image (circle)" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Gentle on skin" },
+        { "type": "text", "id": "text", "label": "Text", "default": "Cleans without irritation or stripping" }
       ]
     }
   ],
