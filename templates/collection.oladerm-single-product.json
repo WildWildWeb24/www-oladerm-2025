@@ -225,6 +225,7 @@
           ]
         }
       },
+      "disabled": true,
       "settings": {
         "layout_type": "organic",
         "product_card_size": "medium",
@@ -241,10 +242,37 @@
         "padding-block-start": 0,
         "padding-block-end": 32
       }
+    },
+    "oladerm_single_product_banner_QLEgL9": {
+      "type": "oladerm-single-product-banner",
+      "name": "Oladerm — Single product",
+      "settings": {
+        "fit_container": true,
+        "show_collection_header": true,
+        "concern_title": "",
+        "concern_text": "",
+        "product": "velvet-skin-balm-moisture-lock-100ml",
+        "product_tagline": "Restores moisture and prevents dryness",
+        "benefit_1": "Deep hydration & nourishment",
+        "benefit_2": "Strengthens the skin barrier",
+        "benefit_3": "Prevents dryness or tightness",
+        "atc_label": "ADD TO CART",
+        "show_view_product": false,
+        "view_label": "View product",
+        "banner_overlay": 0.3,
+        "banner_heading": "Barrier care, made simple",
+        "banner_text": "Lightweight hydration that feels comfortable all day.",
+        "banner_button_label": "Button",
+        "banner_button_link": "",
+        "card_bg": "#ffffff",
+        "button_bg": "#2b2b2b",
+        "button_text": "#ffffff"
+      }
     }
   },
   "order": [
     "section",
-    "main"
+    "main",
+    "oladerm_single_product_banner_QLEgL9"
   ]
 }
