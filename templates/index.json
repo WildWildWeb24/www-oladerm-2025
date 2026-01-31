@@ -413,6 +413,138 @@
         "primary_cta_link": "",
         "add_to_cart_label": "Add to Cart"
       }
+    },
+    "oladerm_product_hero_cU7FTG": {
+      "type": "oladerm-product-hero",
+      "blocks": {
+        "benefit_KVV796": {
+          "type": "benefit",
+          "settings": {
+            "title": "Gentle on skin",
+            "text": "Cleans without irritation or stripping"
+          }
+        },
+        "benefit_QHcdPD": {
+          "type": "benefit",
+          "settings": {
+            "title": "Gentle on skin",
+            "text": "Cleans without irritation or stripping"
+          }
+        },
+        "benefit_9Jwaq8": {
+          "type": "benefit",
+          "settings": {
+            "title": "Gentle on skin",
+            "text": "Cleans without irritation or stripping"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_KVV796",
+        "benefit_QHcdPD",
+        "benefit_9Jwaq8"
+      ],
+      "name": "Oladerm - Product Hero",
+      "settings": {
+        "container": "contained",
+        "product": "glowrevive-cream-radiant-revive-100ml",
+        "default_media_position": "featured",
+        "badge_text": "badge_text",
+        "pill_1": "pill_1",
+        "pill_2": "pill_1",
+        "tax_note": "Taxes included",
+        "primary_cta_label": "View Products",
+        "primary_cta_link": "",
+        "add_to_cart_label": "Add to Cart"
+      }
+    },
+    "oladerm_product_hero_a4XEPV": {
+      "type": "oladerm-product-hero",
+      "blocks": {
+        "benefit_UmzJHT": {
+          "type": "benefit",
+          "settings": {
+            "title": "Gentle on skin",
+            "text": "Cleans without irritation or stripping"
+          }
+        },
+        "benefit_jDeimt": {
+          "type": "benefit",
+          "settings": {
+            "title": "Gentle on skin",
+            "text": "Cleans without irritation or stripping"
+          }
+        },
+        "benefit_UNAc6w": {
+          "type": "benefit",
+          "settings": {
+            "title": "Gentle on skin",
+            "text": "Cleans without irritation or stripping"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_UmzJHT",
+        "benefit_jDeimt",
+        "benefit_UNAc6w"
+      ],
+      "name": "Oladerm - Product Hero",
+      "settings": {
+        "container": "contained",
+        "product": "satinskin-cleanser-velvet-touch-100ml",
+        "default_media_position": "featured",
+        "badge_text": "badge_text",
+        "pill_1": "pill_1",
+        "pill_2": "pill_1",
+        "tax_note": "Taxes included",
+        "primary_cta_label": "View Products",
+        "primary_cta_link": "",
+        "add_to_cart_label": "Add to Cart"
+      }
+    },
+    "oladerm_product_hero_T4qV8D": {
+      "type": "oladerm-product-hero",
+      "blocks": {
+        "benefit_cTJJkt": {
+          "type": "benefit",
+          "settings": {
+            "title": "Gentle on skin",
+            "text": "Cleans without irritation or stripping"
+          }
+        },
+        "benefit_xEmWef": {
+          "type": "benefit",
+          "settings": {
+            "title": "Gentle on skin",
+            "text": "Cleans without irritation or stripping"
+          }
+        },
+        "benefit_Dt3jWn": {
+          "type": "benefit",
+          "settings": {
+            "title": "Gentle on skin",
+            "text": "Cleans without irritation or stripping"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_cTJJkt",
+        "benefit_xEmWef",
+        "benefit_Dt3jWn"
+      ],
+      "name": "Oladerm - Product Hero",
+      "settings": {
+        "container": "contained",
+        "product": "sunshield-sunscreen-cream-spf-50-pa-100ml",
+        "default_media_position": "featured",
+        "badge_text": "badge_text",
+        "pill_1": "pill_1",
+        "pill_2": "pill_1",
+        "tax_note": "Taxes included",
+        "primary_cta_label": "View Products",
+        "primary_cta_link": "",
+        "add_to_cart_label": "Add to Cart"
+      }
     }
   },
   "order": [
@@ -420,6 +552,9 @@
     "shop_range",
     "brand_story",
     "concern_row",
-    "oladerm_product_hero_yzgWaT"
+    "oladerm_product_hero_yzgWaT",
+    "oladerm_product_hero_cU7FTG",
+    "oladerm_product_hero_a4XEPV",
+    "oladerm_product_hero_T4qV8D"
   ]
 }
