@@ -324,11 +324,11 @@
             "answer_4": "Powered by glycolic acid for renewal, vitamin C for brightness, ceramides for barrier support, and olive squalane for balanced hydration.",
             "question_5": "When will I see results?",
             "answer_5": "Skin may feel smoother within a few uses. Visible improvement in tone and texture appears with consistent use over 2–4 weeks.",
-            "gap": 20,
+            "gap": 10,
             "border_radius": 8,
-            "aspect_ratio": 100,
+            "aspect_ratio": 150,
             "mobile_slide_width": 85,
-            "mobile_aspect_ratio": 100
+            "mobile_aspect_ratio": 150
           },
           "blocks": {}
         }
