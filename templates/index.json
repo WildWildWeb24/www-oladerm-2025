@@ -461,6 +461,47 @@
         "add_to_cart_label": "Add to Cart"
       }
     },
+    "marquee_K6qLJc": {
+      "type": "marquee",
+      "blocks": {
+        "text_TWBJMX": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Clinically thoughtful. Comfortingly simple.</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "custom",
+            "font": "var(--font-body--family)",
+            "font_size": "2rem",
+            "line_height": "tight",
+            "letter_spacing": "tight",
+            "case": "none",
+            "wrap": "nowrap",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_TWBJMX"
+      ],
+      "name": "t:names.marquee_section",
+      "settings": {
+        "movement_direction": "normal",
+        "color_scheme": "",
+        "padding-block-start": 24,
+        "padding-block-end": 24,
+        "gap_between_elements": 24
+      }
+    },
     "oladerm_product_hero_a4XEPV": {
       "type": "oladerm-product-hero",
       "blocks": {
@@ -561,6 +602,7 @@
     "shop_range",
     "brand_story",
     "concern_row",
+    "marquee_K6qLJc",
     "oladerm_product_hero_yzgWaT",
     "oladerm_product_hero_cU7FTG",
     "oladerm_product_hero_a4XEPV",
