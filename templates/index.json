@@ -373,25 +373,25 @@
         "benefit_GEeCAg": {
           "type": "benefit",
           "settings": {
-            "icon": "shopify://shop_images/oladerm-usp-2.png",
-            "title": "Gentle on skin",
-            "text": "Cleans without irritation or stripping"
+            "icon": "shopify://shop_images/oladerm-skin-care-usp-7.jpg",
+            "title": "Deep nourishment",
+            "text": "Comforts dry, stressed skin instantly"
           }
         },
         "benefit_BmjYHD": {
           "type": "benefit",
           "settings": {
-            "icon": "shopify://shop_images/oladerm-usp-1.png",
-            "title": "Gentle on skin",
-            "text": "Cleans without irritation or stripping"
+            "icon": "shopify://shop_images/oladerm-skin-care-usp-8.jpg",
+            "title": "Barrier care",
+            "text": "Helps protect skin from moisture loss"
           }
         },
         "benefit_KcnEi9": {
           "type": "benefit",
           "settings": {
-            "icon": "shopify://shop_images/oladerm-usp-3.png",
-            "title": "Gentle on skin",
-            "text": "Cleans without irritation or stripping"
+            "icon": "shopify://shop_images/oladerm-skin-care-usp-9.jpg",
+            "title": "Lasting comfort",
+            "text": "Ideal for daily use, especially on dry days"
           }
         }
       },
@@ -406,11 +406,11 @@
         "product": "velvet-skin-balm-moisture-lock-100ml",
         "default_media_position": "featured",
         "badge_text": "Skin Balm",
-        "pill_1": "Vitamin C",
-        "pill_2": "Skincare",
+        "pill_1": "Niacinamide care",
+        "pill_2": "Everyday moisture",
         "tax_note": "Taxes included",
         "primary_cta_label": "View Products",
-        "primary_cta_link": "",
+        "primary_cta_link": "shopify://products/velvet-skin-balm-moisture-lock-100ml",
         "add_to_cart_label": "Add to Cart"
       }
     },
