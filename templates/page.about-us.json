@@ -89,6 +89,18 @@
         "padding-block-end": 0
       }
     },
+    "home_brand_story_6gcVAR": {
+      "type": "home-brand-story",
+      "name": "Brand story banner",
+      "settings": {
+        "headline": "Oladerm is made to perform in real conditions.",
+        "subheadline": "<p><u>Heat</u>, <u>humidity</u>, and <u>daily sun exposure</u> while delivering <u>effective</u>, <u>reliable</u> <u>care</u> your <u>skin</u> can <u>trust</u>.</p>",
+        "body": "<p>Thoughtfully formulated with skin-first principles at its core. Our products are <u>free from added fragrance and over 2000 harsh or unnecessary chemicals</u>, making them gentle enough for sensitive and reactive skin. Each formula is <u>dermatologically tested</u>, <u>pH balanced</u>, and <u>designed to support the skin's natural barrier without irritation</u>. Carefully developed for everyday use.</p>",
+        "color_scheme": "",
+        "padding-block-start": 40,
+        "padding-block-end": 40
+      }
+    },
     "section_rpndfk": {
       "type": "section",
       "blocks": {
@@ -1060,6 +1072,7 @@
   "order": [
     "main",
     "media_with_content_GyGane",
+    "home_brand_story_6gcVAR",
     "section_rpndfk",
     "media_with_content_8rED4k",
     "marquee_eRrhzd",
