@@ -336,6 +336,7 @@
       "blocks": {
         "concern1": {
           "type": "concern",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/oladerm-concern-01.jpg",
             "label": "Dry/Dehydrated Skin",
@@ -347,6 +348,7 @@
         },
         "concern2": {
           "type": "concern",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/oladerm-concern-03.jpg",
             "label": "Open Pores & Uneven Finish",
@@ -358,6 +360,7 @@
         },
         "concern3": {
           "type": "concern",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/oladerm-concern-05.jpg",
             "label": "Acne-Prone & Breakout-Friendly Skin",
@@ -369,6 +372,7 @@
         },
         "concern4": {
           "type": "concern",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/oladerm-concern-02.jpg",
             "label": "Pigmentation, Tan & Uneven Tone",
@@ -380,6 +384,7 @@
         },
         "concern5": {
           "type": "concern",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/oladerm-concern-04.jpg",
             "label": "Sun Damage & Daily UV Exposure",
@@ -406,6 +411,62 @@
         "color_scheme": "scheme-2",
         "padding-block-start": 32,
         "padding-block-end": 32
+      }
+    },
+    "collection_links_NLg7iK": {
+      "type": "collection-links",
+      "blocks": {
+        "link": {
+          "type": "_collection-link",
+          "static": true,
+          "settings": {
+            "show_count": true
+          },
+          "blocks": {
+            "title": {
+              "type": "_inline-collection-title",
+              "name": "t:names.title",
+              "static": true,
+              "settings": {
+                "font": "var(--font-subheading--family)",
+                "weight": "",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none"
+              },
+              "blocks": {}
+            },
+            "image": {
+              "type": "_image",
+              "static": true,
+              "settings": {
+                "height": "medium",
+                "ratio": "portrait",
+                "border_radius": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": []
+        }
+      },
+      "name": "t:names.collection_links_text",
+      "settings": {
+        "collection_list": [
+          "acne-prone-breakout-friendly-skin",
+          "dry-dehydrated-skin",
+          "open-pores-uneven-finish",
+          "pigmentation-tan-uneven-tone",
+          "sensitive-easily-irritated-skin",
+          "sun-damage-daily-uv-exposure"
+        ],
+        "layout": "text",
+        "section_width": "page-width",
+        "alignment": "center",
+        "image_position": "right",
+        "color_scheme": "scheme-2",
+        "padding-block-start": 40,
+        "padding-block-end": 40
       }
     },
     "oladerm_product_hero_yzgWaT": {
@@ -755,62 +816,6 @@
         "padding-block-start": 40,
         "padding-block-end": 40
       }
-    },
-    "collection_links_NLg7iK": {
-      "type": "collection-links",
-      "blocks": {
-        "link": {
-          "type": "_collection-link",
-          "static": true,
-          "settings": {
-            "show_count": true
-          },
-          "blocks": {
-            "title": {
-              "type": "_inline-collection-title",
-              "name": "t:names.title",
-              "static": true,
-              "settings": {
-                "font": "var(--font-subheading--family)",
-                "weight": "",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none"
-              },
-              "blocks": {}
-            },
-            "image": {
-              "type": "_image",
-              "static": true,
-              "settings": {
-                "height": "medium",
-                "ratio": "portrait",
-                "border_radius": 0
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": []
-        }
-      },
-      "name": "t:names.collection_links_text",
-      "settings": {
-        "collection_list": [
-          "acne-prone-breakout-friendly-skin",
-          "dry-dehydrated-skin",
-          "open-pores-uneven-finish",
-          "pigmentation-tan-uneven-tone",
-          "sensitive-easily-irritated-skin",
-          "sun-damage-daily-uv-exposure"
-        ],
-        "layout": "text",
-        "section_width": "page-width",
-        "alignment": "center",
-        "image_position": "right",
-        "color_scheme": "",
-        "padding-block-start": 40,
-        "padding-block-end": 40
-      }
     }
   },
   "order": [
@@ -819,6 +824,7 @@
     "shop_range",
     "brand_story",
     "concern_row",
+    "collection_links_NLg7iK",
     "oladerm_product_hero_yzgWaT",
     "divider_pP6iVV",
     "oladerm_product_hero_cU7FTG",
@@ -826,7 +832,6 @@
     "oladerm_product_hero_a4XEPV",
     "divider_7qz6XR",
     "oladerm_product_hero_T4qV8D",
-    "section_UyyALr",
-    "collection_links_NLg7iK"
+    "section_UyyALr"
   ]
 }
