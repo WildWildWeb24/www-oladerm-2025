@@ -19,7 +19,7 @@
             "media_presentation": "grid",
             "media_columns": "two",
             "image_gap": 4,
-            "large_first_image": false,
+            "large_first_image": true,
             "icons_style": "none",
             "slideshow_controls_style": "counter",
             "slideshow_mobile_controls_style": "dots",
@@ -290,7 +290,7 @@
         "gap": 20,
         "enable_sticky_add_to_cart": true,
         "color_scheme": "scheme-2",
-        "padding-block-start": 0,
+        "padding-block-start": 22,
         "padding-block-end": 0
       }
     },
