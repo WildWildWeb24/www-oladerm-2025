@@ -413,7 +413,7 @@
           "settings": {
             "horizontal_alignment_flex_direction_column": "flex-start",
             "vertical_alignment_flex_direction_column": "space-between",
-            "gap": 24
+            "gap": 10
           },
           "blocks": {
             "text_CQfFW8": {
@@ -568,7 +568,7 @@
         "media_height": "60svh",
         "section_width": "page-width",
         "extend_media": true,
-        "color_scheme": "scheme-4",
+        "color_scheme": "scheme-3",
         "padding-block-start": 0,
         "padding-block-end": 0
       }
