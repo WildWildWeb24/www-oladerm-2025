@@ -420,6 +420,7 @@
         "benefit_KVV796": {
           "type": "benefit",
           "settings": {
+            "icon": "shopify://shop_images/oladerm-usp-1.png",
             "title": "Gentle on skin",
             "text": "Cleans without irritation or stripping"
           }
@@ -427,15 +428,17 @@
         "benefit_QHcdPD": {
           "type": "benefit",
           "settings": {
-            "title": "Gentle on skin",
-            "text": "Cleans without irritation or stripping"
+            "icon": "shopify://shop_images/oladerm-usp-2.png",
+            "title": "Locks in moisture",
+            "text": "Helps maintain healthy skin hydration"
           }
         },
         "benefit_9Jwaq8": {
           "type": "benefit",
           "settings": {
-            "title": "Gentle on skin",
-            "text": "Cleans without irritation or stripping"
+            "icon": "shopify://shop_images/oladerm-usp-3.png",
+            "title": "Everyday friendly",
+            "text": "Suitable for daily use, AM & PM"
           }
         }
       },
@@ -464,22 +467,25 @@
         "benefit_UmzJHT": {
           "type": "benefit",
           "settings": {
-            "title": "Gentle on skin",
-            "text": "Cleans without irritation or stripping"
+            "icon": "shopify://shop_images/oladerm-skin-care-usp-4.jpg",
+            "title": "Soft, balanced cleanse",
+            "text": "Removes impurities without upsetting skin balance"
           }
         },
         "benefit_jDeimt": {
           "type": "benefit",
           "settings": {
-            "title": "Gentle on skin",
-            "text": "Cleans without irritation or stripping"
+            "icon": "shopify://shop_images/oladerm-skin-care-usp-5.jpg",
+            "title": "Moisture supporting",
+            "text": "Helps skin retain comfort while cleansing"
           }
         },
         "benefit_UNAc6w": {
           "type": "benefit",
           "settings": {
-            "title": "Gentle on skin",
-            "text": "Cleans without irritation or stripping"
+            "icon": "shopify://shop_images/oladerm-skin-care-usp-6.jpg",
+            "title": "Twice daily use",
+            "text": "Designed for both morning & night routines"
           }
         }
       },
@@ -508,22 +514,24 @@
         "benefit_cTJJkt": {
           "type": "benefit",
           "settings": {
-            "title": "Gentle on skin",
-            "text": "Cleans without irritation or stripping"
+            "icon": "shopify://shop_images/oladerm-skin-care-usp-2.jpg",
+            "title": "Lightweight protection",
+            "text": "Shields skin without feeling heavy or greasy"
           }
         },
         "benefit_xEmWef": {
           "type": "benefit",
           "settings": {
-            "title": "Gentle on skin",
-            "text": "Cleans without irritation or stripping"
+            "title": "Comfort-first hydration",
+            "text": "Keeps skin soft and comfortable in the sun"
           }
         },
         "benefit_Dt3jWn": {
           "type": "benefit",
           "settings": {
-            "title": "Gentle on skin",
-            "text": "Cleans without irritation or stripping"
+            "icon": "shopify://shop_images/oladerm-skin-care-usp-3.jpg",
+            "title": "Daily essential",
+            "text": "Easy to wear every day, under makeup too"
           }
         }
       },
