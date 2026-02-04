@@ -1,18 +1,7 @@
 {% comment %}
   OLADERM – Product Hero Section (Gallery + Product Info + Benefits + CTAs)
 
-  Features:
-  1) "Fit into container" option (Contained / Full width)
-  2) Pulls all data from product (title, price, description, media)
-  3) Optional: choose product in section settings (for non-product pages)
-
-  Optional product metafields (namespace: custom):
-  - custom.hero_badge_text  (single line text)  e.g. "Gentle Daily Cleanser"
-  - custom.hero_pill_1      (single line text)  e.g. "Restores skin"
-  - custom.hero_pill_2      (single line text)  e.g. "Vitamin C"
-
-  Benefits:
-  - Use section blocks (recommended). Add 3 blocks.
+  + Added: Color scheme option (Shopify OS 2.0)
 {% endcomment %}
 
 {%- liquid
@@ -53,9 +42,14 @@
   if pill_2 == blank and p != nil
     assign pill_2 = p.metafields.custom.hero_pill_2.value
   endif
+
+  assign scheme_class = ''
+  if section.settings.color_scheme != blank
+    assign scheme_class = 'color-' | append: section.settings.color_scheme
+  endif
 -%}
 
-<section class="oladerm-hero" data-section-id="{{ section.id }}">
+<section class="oladerm-hero {{ scheme_class }}" data-section-id="{{ section.id }}">
   <div class="{{ wrapper_class }}">
     {% if p == nil %}
       <div class="oladerm__empty">
@@ -135,9 +129,7 @@
 
           <div class="oladerm__divider"></div>
 
-          
-
-          <!-- Benefits (matches your 2nd screenshot) -->
+          <!-- Benefits -->
           <div class="oladerm__benefits">
             {%- for block in section.blocks -%}
               {%- if block.type == 'benefit' -%}
@@ -194,7 +186,12 @@
   </div>
 
   <style>
-    .oladerm-hero { padding: 28px 0; }
+    /* If your theme supports schemes, this makes the section inherit them */
+    .oladerm-hero {
+      padding: 28px 0;
+      background: rgb(var(--color-background, 255,255,255));
+      color: rgb(var(--color-foreground, 17,17,17));
+    }
 
     .oladerm__container { max-width: 1200px; margin: 0 auto; padding: 0 18px; }
     .oladerm__container--full { max-width: none; padding: 0 24px; }
@@ -303,15 +300,7 @@
       margin: 18px 0 18px;
     }
 
-    .oladerm__desc {
-      font-size: 16px;
-      line-height: 1.6;
-      opacity: 0.9;
-      max-width: 650px;
-      margin-bottom: 18px;
-    }
-
-    /* ✅ BENEFITS: matches your 2nd image */
+    /* Benefits */
     .oladerm__benefits {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -395,28 +384,18 @@
     }
 
     @media (max-width: 768px) {
-        .oladerm__benefits {
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-        }
+      .oladerm__benefits { grid-template-columns: repeat(3, 1fr); gap: 16px; }
 
-        .oladerm__benefit-icon img {
-            width: 56px;
-            height: 56px;
-        }
+      .oladerm__benefit-icon img { width: 56px; height: 56px; }
 
-        .oladerm__benefit-title {
-            font-size: 18px;
-            margin-bottom: 6px;
-        }
+      .oladerm__benefit-title { font-size: 18px; margin-bottom: 6px; }
 
-        .oladerm__benefit-sub {
-            font-size: 13px;
-            line-height: 1.35;
-            max-width: 160px;
-        }
-}
-
+      .oladerm__benefit-sub {
+        font-size: 13px;
+        line-height: 1.35;
+        max-width: 160px;
+      }
+    }
 
     .oladerm__empty {
       border: 1px dashed rgba(0,0,0,0.25);
@@ -454,6 +433,12 @@
 {
   "name": "Oladerm - Product Hero",
   "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "background-1"
+    },
     {
       "type": "select",
       "id": "container",
@@ -498,7 +483,7 @@
       "type": "text",
       "id": "pill_2",
       "label": "Image pill 2 (optional)",
-      "default": "pill 1",
+      "default": "pill 2",
       "info": "If empty, will try product metafield custom.hero_pill_2"
     },
     {
