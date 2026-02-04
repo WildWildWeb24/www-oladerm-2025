@@ -60,12 +60,12 @@
               "type": "jumbo-text",
               "name": "t:names.jumbo_text",
               "settings": {
-                "text": "Up\nThe\nAnte",
+                "text": "Healthy\nSkin, \nAlways \nIn",
                 "font": "heading",
                 "alignment": "left",
                 "line_height": "0.8",
                 "letter_spacing": "-0.03em",
-                "case": "uppercase",
+                "case": "none",
                 "text_effect": "none",
                 "animation_repeat": false
               },
@@ -346,6 +346,47 @@
         "padding-block-end": 0
       }
     },
+    "marquee_eRrhzd": {
+      "type": "marquee",
+      "blocks": {
+        "text_maQAH4": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We make things that work better and last longer.</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "custom",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "tight",
+            "letter_spacing": "tight",
+            "case": "none",
+            "wrap": "nowrap",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_maQAH4"
+      ],
+      "name": "t:names.marquee_section",
+      "settings": {
+        "movement_direction": "normal",
+        "color_scheme": "",
+        "padding-block-start": 24,
+        "padding-block-end": 24,
+        "gap_between_elements": 24
+      }
+    },
     "media_with_content_jwfAxi": {
       "type": "media-with-content",
       "blocks": {
@@ -525,47 +566,6 @@
         "color_scheme": "scheme-4",
         "padding-block-start": 0,
         "padding-block-end": 0
-      }
-    },
-    "marquee_eRrhzd": {
-      "type": "marquee",
-      "blocks": {
-        "text_maQAH4": {
-          "type": "text",
-          "settings": {
-            "text": "<p>We make things that work better and last longer.</p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "custom",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "tight",
-            "letter_spacing": "tight",
-            "case": "none",
-            "wrap": "nowrap",
-            "color": "var(--color-foreground)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "text_maQAH4"
-      ],
-      "name": "t:names.marquee_section",
-      "settings": {
-        "movement_direction": "normal",
-        "color_scheme": "",
-        "padding-block-start": 24,
-        "padding-block-end": 24,
-        "gap_between_elements": 24
       }
     },
     "section_ch7wpD": {
