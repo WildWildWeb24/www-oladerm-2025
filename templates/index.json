@@ -367,6 +367,47 @@
         "padding-block-end": 32
       }
     },
+    "marquee_K6qLJc": {
+      "type": "marquee",
+      "blocks": {
+        "text_TWBJMX": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Clinically thoughtful. Comfortingly simple.</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "custom",
+            "font": "var(--font-body--family)",
+            "font_size": "2rem",
+            "line_height": "tight",
+            "letter_spacing": "tight",
+            "case": "none",
+            "wrap": "nowrap",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_TWBJMX"
+      ],
+      "name": "t:names.marquee_section",
+      "settings": {
+        "movement_direction": "normal",
+        "color_scheme": "",
+        "padding-block-start": 24,
+        "padding-block-end": 24,
+        "gap_between_elements": 24
+      }
+    },
     "oladerm_product_hero_yzgWaT": {
       "type": "oladerm-product-hero",
       "blocks": {
@@ -402,6 +443,7 @@
       ],
       "name": "Oladerm - Product Hero",
       "settings": {
+        "color_scheme": "scheme-2",
         "container": "contained",
         "product": "velvet-skin-balm-moisture-lock-100ml",
         "default_media_position": "featured",
@@ -449,6 +491,7 @@
       ],
       "name": "Oladerm - Product Hero",
       "settings": {
+        "color_scheme": "scheme-3",
         "container": "contained",
         "product": "glowrevive-cream-radiant-revive-100ml",
         "default_media_position": "featured",
@@ -459,47 +502,6 @@
         "primary_cta_label": "View Products",
         "primary_cta_link": "",
         "add_to_cart_label": "Add to Cart"
-      }
-    },
-    "marquee_K6qLJc": {
-      "type": "marquee",
-      "blocks": {
-        "text_TWBJMX": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Clinically thoughtful. Comfortingly simple.</p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "custom",
-            "font": "var(--font-body--family)",
-            "font_size": "2rem",
-            "line_height": "tight",
-            "letter_spacing": "tight",
-            "case": "none",
-            "wrap": "nowrap",
-            "color": "var(--color-foreground)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "text_TWBJMX"
-      ],
-      "name": "t:names.marquee_section",
-      "settings": {
-        "movement_direction": "normal",
-        "color_scheme": "",
-        "padding-block-start": 24,
-        "padding-block-end": 24,
-        "gap_between_elements": 24
       }
     },
     "oladerm_product_hero_a4XEPV": {
@@ -537,6 +539,7 @@
       ],
       "name": "Oladerm - Product Hero",
       "settings": {
+        "color_scheme": "",
         "container": "contained",
         "product": "satinskin-cleanser-velvet-touch-100ml",
         "default_media_position": "featured",
@@ -584,6 +587,7 @@
       ],
       "name": "Oladerm - Product Hero",
       "settings": {
+        "color_scheme": "",
         "container": "contained",
         "product": "sunshield-sunscreen-cream-spf-50-pa-100ml",
         "default_media_position": "featured",
