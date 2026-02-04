@@ -514,7 +514,7 @@
         "benefit_cTJJkt": {
           "type": "benefit",
           "settings": {
-            "icon": "shopify://shop_images/oladerm-skin-care-usp-2.jpg",
+            "icon": "shopify://shop_images/oladerm-skin-care-usp-1.jpg",
             "title": "Lightweight protection",
             "text": "Shields skin without feeling heavy or greasy"
           }
@@ -522,6 +522,7 @@
         "benefit_xEmWef": {
           "type": "benefit",
           "settings": {
+            "icon": "shopify://shop_images/oladerm-skin-care-usp-2.jpg",
             "title": "Comfort-first hydration",
             "text": "Keeps skin soft and comfortable in the sun"
           }
