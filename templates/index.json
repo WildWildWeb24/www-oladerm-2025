@@ -298,9 +298,9 @@
           "settings": {
             "image": "shopify://shop_images/oladerm-concern-01.jpg",
             "label": "Dry/Dehydrated Skin",
-            "description": "Hydrate and lock in moisture",
-            "cta_label": "Add to cart",
-            "cta_link": "",
+            "description": "Restores moisture, strengthens the skin barrier, and prevents dryness or tightness.",
+            "cta_label": "",
+            "cta_link": "shopify://collections/dry-dehydrated-skin",
             "cta_new_tab": false
           }
         },
@@ -308,10 +308,10 @@
           "type": "concern",
           "settings": {
             "image": "shopify://shop_images/oladerm-concern-03.jpg",
-            "label": "Uneven Texture",
-            "description": "Smooth and refine gently",
-            "cta_label": "Add to cart",
-            "cta_link": "",
+            "label": "Open Pores & Uneven Finish",
+            "description": "Blurs the look of pores while hydrating and protecting the skin.",
+            "cta_label": "",
+            "cta_link": "shopify://collections/open-pores-uneven-finish",
             "cta_new_tab": false
           }
         },
@@ -319,10 +319,10 @@
           "type": "concern",
           "settings": {
             "image": "shopify://shop_images/oladerm-concern-05.jpg",
-            "label": "Dull, Tired Skin",
-            "description": "Boost radiance daily",
-            "cta_label": "Add to cart",
-            "cta_link": "",
+            "label": "Acne-Prone & Breakout-Friendly Skin",
+            "description": "Hydrates without clogging pores or triggering breakouts.",
+            "cta_label": "",
+            "cta_link": "shopify://collections/acne-prone-breakout-friendly-skin",
             "cta_new_tab": false
           }
         },
@@ -330,10 +330,10 @@
           "type": "concern",
           "settings": {
             "image": "shopify://shop_images/oladerm-concern-02.jpg",
-            "label": "Blemishes",
-            "description": "Clarify without stripping",
-            "cta_label": "Add to cart",
-            "cta_link": "",
+            "label": "Pigmentation, Tan & Uneven Tone",
+            "description": "Helps improve pigmentation, dullness, and uneven skin tone over time.",
+            "cta_label": "",
+            "cta_link": "shopify://collections/pigmentation-tan-uneven-tone",
             "cta_new_tab": false
           }
         },
@@ -341,10 +341,10 @@
           "type": "concern",
           "settings": {
             "image": "shopify://shop_images/oladerm-concern-04.jpg",
-            "label": "Daily UV Exposure",
-            "description": "Protect and nourish",
-            "cta_label": "Add to cart",
-            "cta_link": "",
+            "label": "Sun Damage & Daily UV Exposure",
+            "description": "Broad-spectrum protection to help prevent tanning, pigmentation, and premature ageing.",
+            "cta_label": "",
+            "cta_link": "shopify://collections/sun-damage-daily-uv-exposure",
             "cta_new_tab": false
           }
         }
