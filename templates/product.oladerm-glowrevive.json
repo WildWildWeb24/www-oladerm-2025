@@ -51,7 +51,7 @@
             "custom_width_mobile": 100,
             "height": "fit",
             "details_position": "flex-start",
-            "gap": 28,
+            "gap": 16,
             "sticky_details_desktop": true,
             "inherit_color_scheme": true,
             "color_scheme": "scheme-1",
@@ -182,6 +182,18 @@
               },
               "blocks": {}
             },
+            "divider_KBfEEX": {
+              "type": "_divider",
+              "name": "t:names.divider",
+              "settings": {
+                "thickness": 1,
+                "corner_radius": "square",
+                "width_percent": 100,
+                "padding-block-start": 0,
+                "padding-block-end": 0
+              },
+              "blocks": {}
+            },
             "text_aEtTtq": {
               "type": "text",
               "name": "Product description",
@@ -275,6 +287,7 @@
             "group_icgrde",
             "divider_VJhene",
             "custom_liquid_nDHk3J",
+            "divider_KBfEEX",
             "text_aEtTtq",
             "variant_picker_R3rGDr",
             "buy_buttons_eYQEYi",
