@@ -420,7 +420,7 @@
               "type": "text",
               "name": "t:names.caption",
               "settings": {
-                "text": "<p>Dr Aprita Goyal</p>",
+                "text": "<p>Dr Apratim Goel</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -510,7 +510,7 @@
                 "text_erryeg": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>For over 25 years, <strong>Dr. Apratim Goel</strong> has worked closely with skin — listening to it, treating it, and understanding how deeply skin health is tied to confidence and self-worth.</p><p>From everyday women to faces seen on screen, her work has always been rooted in the same belief: skincare should never feel intimidating or exclusionary. It should feel honest, supportive, and human.</p><p>Oladerm was created from that belief — a brand that brings clinical expertise together with empathy, simplicity, and real care. Because true glow isn’t about changing who you are.</p>",
+                    "text": "<p>For over 25 years, Dr Apratim Goel has worked closely with skin — listening to it, treating it, and understanding how deeply skin health is tied to confidence and self-worth.</p><p>From everyday women to faces seen on screen, her work has always been rooted in the same belief: skincare should never feel intimidating or exclusionary. It should feel honest, supportive, and human.</p><p>Oladerm was created from that belief — a brand that brings clinical expertise together with empathy, simplicity, and real care. Because true glow isn’t about changing who you are.</p>",
                     "width": "fit-content",
                     "max_width": "narrow",
                     "alignment": "left",
@@ -604,7 +604,7 @@
         "button_gzWGj8": {
           "type": "button",
           "settings": {
-            "label": "Dr Arpita Goyal",
+            "label": "Dr Apratim Goel",
             "link": "",
             "open_in_new_tab": false,
             "style_class": "link",
