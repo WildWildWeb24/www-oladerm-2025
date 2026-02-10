@@ -265,7 +265,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<p><strong>Call Us</strong></p><p><a href=\"tel:+919892885872\" title=\"tel:+919892885872\">+91 9892885872</a></p><p><a href=\"mailto:oladermskincare@gmail.com\" title=\"mailto:oladermskincare@gmail.com\">oladermskincare@gmail.com<br/></a></p>",
+                "text": "<p><strong>Call Us</strong></p><p><a href=\"tel:+919892885872\" title=\"tel:+919892885872\">+91 9892885872</a></p><p><a href=\"mailto:oladermskincare@gmail.com\" title=\"mailto:oladermskincare@gmail.com\">support@oladerm.com</a><br/></p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
