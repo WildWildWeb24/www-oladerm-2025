@@ -18,7 +18,7 @@
           "type": "_announcement",
           "settings": {
             "text": "15% Off on first order | Sign Up to Newsletter",
-            "link": "",
+            "link": "shopify://pages/newsletter-signup",
             "font": "var(--font-subheading--family)",
             "font_size": "0.75rem",
             "weight": "",
