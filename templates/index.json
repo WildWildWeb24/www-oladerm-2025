@@ -295,9 +295,12 @@
           ]
         }
       },
+      "custom_css": [
+        ".product-badges--top-right {opacity: 0;}"
+      ],
       "name": "Shop our range",
       "settings": {
-        "collection": "all",
+        "collection": "all-products",
         "layout_type": "carousel",
         "carousel_on_mobile": true,
         "max_products": 7,
