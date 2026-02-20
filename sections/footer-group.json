@@ -239,7 +239,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<p>Ground Floor, Shop No. 002, Sorrento Building, Opp Country Club, Desi Road, Andheri West, Mumbai, 400 0053</p>",
+                "text": "<p><strong>OLADERM SKINCARE LLP</strong></p><p>Ground Floor, Shop No. 002, Sorrento Building,<br/>Opp Country Club, Desai Road, Andheri West, Mumbai, Maharashtra 400053</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -265,7 +265,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<p><strong>Call Us</strong></p><p><a href=\"tel:+919892885872\" title=\"tel:+919892885872\">+91 9892885872</a></p><p><a href=\"mailto:oladermskincare@gmail.com\" title=\"mailto:oladermskincare@gmail.com\">support@oladerm.com</a><br/></p>",
+                "text": "<p><strong>Call Us</strong></p><p><a href=\"tel:+919892896480\" title=\"tel:+919892896480\">+91 9892896480</a></p><p><a href=\"mailto:oladermskincare@gmail.com\" title=\"mailto:oladermskincare@gmail.com\">support@oladerm.com</a><br/></p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
