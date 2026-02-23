@@ -27,9 +27,35 @@
             "letter_spacing": "normal",
             "case": "none",
             "wrap": "pretty",
-            "color": "var(--color-foreground)",
+            "color": "var(--color-foreground-heading)",
             "background": false,
             "background_color": "#f8f3e9",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_4wYztn": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<p>For over two decades, <strong>Dr. Apratim Goel</strong> has worked closely with skin listening to it, treating it, understanding it. But more importantly, she has understood the people behind it.<br/><br/></p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
             "corner_radius": 0,
             "padding-block-start": 0,
             "padding-block-end": 0,
@@ -46,12 +72,13 @@
       },
       "block_order": [
         "heading",
+        "text_4wYztn",
         "page-content"
       ],
       "settings": {
         "content_direction": "column",
         "gap": 32,
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-fd230819-0f37-4aa1-a99d-12438ff60976",
         "padding-block-start": 40,
         "padding-block-end": 80
       }
