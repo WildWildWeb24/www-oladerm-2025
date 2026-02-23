@@ -577,9 +577,9 @@
             "text_TBmBVV": {
               "type": "text",
               "settings": {
-                "text": "<p>Made with care and unconditionally loved by our customers, this signature bestseller exceeds all expectations.</p>",
+                "text": "<p>With over 25 years in dermatology and aesthetic medicine, Dr. Goel has treated thousands of patients across India.<br/><br/>Her clinical expertise spans acne management, pigmentation, anti-aging therapies, laser treatments, and advanced non-surgical skin rejuvenation. As the head of Cutis Skin Solution, she has built a practice rooted in precision, transparency, and patient trust.<br/><br/>Her work is grounded in science but delivered with empathy.<br/>Because expertise matters. But so does how you make someone feel.<br/><br/></p>",
                 "width": "fit-content",
-                "max_width": "narrow",
+                "max_width": "normal",
                 "alignment": "left",
                 "type_preset": "rte",
                 "font": "var(--font-body--family)",
@@ -598,26 +598,11 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
-            },
-            "button_kxf6KU": {
-              "type": "button",
-              "settings": {
-                "label": "Shop now",
-                "link": "shopify://collections/all",
-                "open_in_new_tab": false,
-                "style_class": "button",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "fit-content",
-                "custom_width_mobile": 100
-              },
-              "blocks": {}
             }
           },
           "block_order": [
             "text_Ymkfe7",
-            "text_TBmBVV",
-            "button_kxf6KU"
+            "text_TBmBVV"
           ]
         }
       },
@@ -638,7 +623,7 @@
         "section_width": "page-width",
         "section_height": "",
         "section_height_custom": 50,
-        "color_scheme": "",
+        "color_scheme": "scheme-1",
         "background_media": "none",
         "video_position": "cover",
         "background_image_position": "cover",
