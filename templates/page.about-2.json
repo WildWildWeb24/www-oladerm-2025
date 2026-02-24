@@ -583,6 +583,47 @@
         "padding-block-start": 80,
         "padding-block-end": 80
       }
+    },
+    "marquee_VNNihd": {
+      "type": "marquee",
+      "blocks": {
+        "text_Yg49Fi": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Simple skincare. Honest science. Care that stays with you.</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h3",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "tight",
+            "letter_spacing": "tight",
+            "case": "none",
+            "wrap": "nowrap",
+            "color": "var(--color-foreground-heading)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_Yg49Fi"
+      ],
+      "name": "t:names.marquee_section",
+      "settings": {
+        "movement_direction": "normal",
+        "color_scheme": "",
+        "padding-block-start": 24,
+        "padding-block-end": 24,
+        "gap_between_elements": 24
+      }
     }
   },
   "order": [
@@ -590,6 +631,7 @@
     "section_iH9xQg",
     "section_FWaa6L",
     "section_ANiYRr",
-    "section_6D3n9X"
+    "section_6D3n9X",
+    "marquee_VNNihd"
   ]
 }
