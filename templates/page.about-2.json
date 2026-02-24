@@ -425,8 +425,8 @@
         "overlay_color": "#00000026",
         "overlay_style": "solid",
         "gradient_direction": "to top",
-        "padding-block-start": 70,
-        "padding-block-end": 70
+        "padding-block-start": 80,
+        "padding-block-end": 80
       }
     },
     "section_6D3n9X": {
@@ -580,8 +580,8 @@
         "overlay_color": "#00000026",
         "overlay_style": "solid",
         "gradient_direction": "to top",
-        "padding-block-start": 40,
-        "padding-block-end": 40
+        "padding-block-start": 80,
+        "padding-block-end": 80
       }
     }
   },
