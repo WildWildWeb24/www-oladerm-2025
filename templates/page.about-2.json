@@ -376,8 +376,9 @@
         "image_bqAmxL": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/oladerm-sunscreen-03_jpg_96a50239-edbf-4610-99ad-bd9f5f00bd36.png",
             "link": "",
-            "image_ratio": "square",
+            "image_ratio": "adapt",
             "width": "fill",
             "custom_width": 100,
             "width_mobile": "fill",
@@ -386,7 +387,7 @@
             "border": "none",
             "border_width": 1,
             "border_opacity": 100,
-            "border_radius": 0,
+            "border_radius": 30,
             "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
