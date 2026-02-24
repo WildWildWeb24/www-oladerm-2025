@@ -435,8 +435,9 @@
         "image_DKNep4": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/oladerm-sunscreen-03_jpg_1d60c957-71cc-498a-83ef-66d8fb784c66.png",
             "link": "",
-            "image_ratio": "square",
+            "image_ratio": "adapt",
             "width": "fill",
             "custom_width": 100,
             "width_mobile": "fill",
@@ -445,7 +446,7 @@
             "border": "none",
             "border_width": 1,
             "border_opacity": 100,
-            "border_radius": 0,
+            "border_radius": 30,
             "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
