@@ -282,9 +282,7 @@
           ]
         }
       },
-      "custom_css": [
-        "/* Force narrow layout tighter */.container--narrow,.page-width--narrow {max-width: 900px !important;}"
-      ],
+      "custom_css": [],
       "settings": {
         "content_width": "content-center-aligned",
         "desktop_media_position": "left",
