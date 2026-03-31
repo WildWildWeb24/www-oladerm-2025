@@ -61,9 +61,9 @@
               "name": "t:names.jumbo_text",
               "settings": {
                 "text": "Healthy\nSkin, \nAlways \nIn",
-                "font": "heading",
+                "font": "subheading",
                 "alignment": "left",
-                "line_height": "0.8",
+                "line_height": "1",
                 "letter_spacing": "-0.03em",
                 "case": "none",
                 "text_effect": "none",
@@ -77,6 +77,9 @@
           ]
         }
       },
+      "custom_css": [
+        "h1 {font-size: 20px;}"
+      ],
       "name": "t:names.editorial_jumbo_text",
       "settings": {
         "media_position": "right",
