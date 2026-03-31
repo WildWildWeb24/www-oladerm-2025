@@ -179,12 +179,14 @@
         "video_6L6hH7": {
           "type": "video",
           "settings": {
+            "video": "shopify://files/videos/oladerm-video-web-01.mp4",
             "video_url": ""
           }
         },
         "video_t7HdDJ": {
           "type": "video",
           "settings": {
+            "video": "shopify://files/videos/oladerm-video-web-02.mp4",
             "video_url": ""
           }
         },
@@ -210,7 +212,7 @@
       "name": "Oladerm video marquee",
       "settings": {
         "heading": "",
-        "page_width": true,
+        "page_width": false,
         "direction": "right_to_left",
         "speed": 2,
         "pause_on_hover": false,
@@ -220,7 +222,7 @@
         "gap": 18,
         "gap_mobile": 12,
         "radius": 20,
-        "bg_color": "#F3EEE6",
+        "bg_color": "#f8f3e9",
         "card_bg": "#ffffff",
         "padding_top": 40,
         "padding_bottom": 40,
@@ -234,7 +236,7 @@
         "image_tKBJFA": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/clinic_expertise.png",
+            "image": "shopify://shop_images/oladerm-sunscreen-Dr._Apratim_Goel.jpg",
             "link": "",
             "image_ratio": "square",
             "width": "fill",
@@ -883,6 +885,7 @@
           "name": "t:names.video",
           "settings": {
             "source": "uploaded",
+            "video": "shopify://files/videos/oladerm-video-web-main-01.mp4",
             "video_url": "",
             "video_autoplay": false,
             "video_loop": true,
