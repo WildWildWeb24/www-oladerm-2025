@@ -319,8 +319,92 @@
         "padding-block-end": 32
       }
     },
+    "oladerm_video_marquee_dLhyPW": {
+      "type": "oladerm-video-marquee",
+      "blocks": {
+        "video_dWrdVe": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/oladerm-influencer-07.mp4",
+            "video_url": ""
+          }
+        },
+        "video_Yp7mnB": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/oladerm-influencer-02.mp4",
+            "video_url": ""
+          }
+        },
+        "video_mNYe8J": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/oladerm-influencer-03.mp4",
+            "video_url": ""
+          }
+        },
+        "video_3mYUnn": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/oladerm-influencer-05.mp4",
+            "video_url": ""
+          }
+        },
+        "video_NLrcmp": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/oladerm-influencer-01.mp4",
+            "video_url": ""
+          }
+        },
+        "video_pJUAyq": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/oladerm-influencer-06.mp4",
+            "video_url": ""
+          }
+        },
+        "video_yVnaTw": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/oladerm-influencer-04.mp4",
+            "video_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "video_dWrdVe",
+        "video_Yp7mnB",
+        "video_mNYe8J",
+        "video_3mYUnn",
+        "video_NLrcmp",
+        "video_pJUAyq",
+        "video_yVnaTw"
+      ],
+      "name": "Oladerm video marquee",
+      "settings": {
+        "heading": "",
+        "page_width": false,
+        "direction": "right_to_left",
+        "speed": 1,
+        "pause_on_hover": false,
+        "card_ratio": "portrait",
+        "card_width_desktop": 180,
+        "card_width_mobile": 140,
+        "gap": 18,
+        "gap_mobile": 12,
+        "radius": 20,
+        "bg_color": "#F3EEE6",
+        "card_bg": "#ffffff",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_top_mobile": 28,
+        "padding_bottom_mobile": 28
+      }
+    },
     "brand_story": {
       "type": "home-brand-story",
+      "disabled": true,
       "custom_css": [
         ".home-brand-story__body {font-size: 24px; line-height: 32px;}"
       ],
@@ -839,6 +923,7 @@
   "order": [
     "marquee_K6qLJc",
     "hero_grid",
+    "oladerm_video_marquee_dLhyPW",
     "shop_range",
     "brand_story",
     "concern_row",
