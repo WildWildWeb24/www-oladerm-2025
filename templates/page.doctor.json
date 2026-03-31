@@ -176,10 +176,38 @@
     "oladerm_video_marquee_M3Udy7": {
       "type": "oladerm-video-marquee",
       "blocks": {
+        "video_NERgxy": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/Skin Balm Cream V003_1.mp4",
+            "video_url": ""
+          }
+        },
         "video_6L6hH7": {
           "type": "video",
           "settings": {
             "video": "shopify://files/videos/oladerm-video-web-01.mp4",
+            "video_url": ""
+          }
+        },
+        "video_7xPC8T": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/Sunscreen V003_3.mp4",
+            "video_url": ""
+          }
+        },
+        "video_XLgVtN": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/oladerm-video-web-03.mp4",
+            "video_url": ""
+          }
+        },
+        "video_jLHBhz": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/Satinskin Cream V003_3.mp4",
             "video_url": ""
           }
         },
@@ -190,23 +218,21 @@
             "video_url": ""
           }
         },
-        "video_XLgVtN": {
-          "type": "video",
-          "settings": {
-            "video_url": ""
-          }
-        },
         "video_7XL4Pi": {
           "type": "video",
           "settings": {
+            "video": "shopify://files/videos/Satinskin Cream V003_1.mp4",
             "video_url": ""
           }
         }
       },
       "block_order": [
+        "video_NERgxy",
         "video_6L6hH7",
-        "video_t7HdDJ",
+        "video_7xPC8T",
         "video_XLgVtN",
+        "video_jLHBhz",
+        "video_t7HdDJ",
         "video_7XL4Pi"
       ],
       "name": "Oladerm video marquee",
@@ -214,14 +240,14 @@
         "heading": "",
         "page_width": false,
         "direction": "right_to_left",
-        "speed": 2,
+        "speed": 1,
         "pause_on_hover": false,
         "card_ratio": "portrait",
-        "card_width_desktop": 260,
+        "card_width_desktop": 180,
         "card_width_mobile": 160,
         "gap": 18,
         "gap_mobile": 12,
-        "radius": 20,
+        "radius": 10,
         "bg_color": "#f8f3e9",
         "card_bg": "#ffffff",
         "padding_top": 40,
