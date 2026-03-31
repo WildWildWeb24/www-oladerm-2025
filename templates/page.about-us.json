@@ -288,7 +288,7 @@
                   "settings": {
                     "text": "<p>At Oladerm, we believe healthy skin is built through simple, everyday habits  not trends, shortcuts, or pressure to be perfect. Just gentle, consistent care that fits into real life.</p><p>Because when your skin feels supported, you feel more at home in yourself.<br/><br/>And that’s a feeling that never goes out of style.</p>",
                     "width": "fit-content",
-                    "max_width": "narrow",
+                    "max_width": "none",
                     "alignment": "left",
                     "type_preset": "custom",
                     "font": "var(--font-body--family)",
@@ -398,7 +398,7 @@
           "static": true,
           "settings": {
             "media_type": "image",
-            "image": "shopify://shop_images/oladerm-dr-apratim-goel.png",
+            "image": "shopify://shop_images/oladerm-dr-goel-image-003.jpg",
             "link": "",
             "video_loop": true,
             "video_autoplay": false,
@@ -512,7 +512,7 @@
                   "settings": {
                     "text": "<p>For over 25 years, Dr Apratim Goel has worked closely with skin  listening to it, treating it, and understanding how deeply skin health is tied to confidence and self-worth.</p><p>From everyday women to faces seen on screen, her work has always been rooted in the same belief: skincare should never feel intimidating or exclusionary. It should feel honest, supportive, and human.</p><p>Oladerm was created from that belief  a brand that brings clinical expertise together with empathy, simplicity, and real care. Because true glow isn’t about changing who you are.</p>",
                     "width": "fit-content",
-                    "max_width": "narrow",
+                    "max_width": "none",
                     "alignment": "left",
                     "type_preset": "custom",
                     "font": "var(--font-body--family)",
