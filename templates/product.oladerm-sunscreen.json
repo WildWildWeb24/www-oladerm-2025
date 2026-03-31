@@ -282,6 +282,9 @@
           ]
         }
       },
+      "custom_css": [
+        ":root {--page-width-narrow: 900px; /* adjust this */}"
+      ],
       "settings": {
         "content_width": "content-center-aligned",
         "desktop_media_position": "left",
