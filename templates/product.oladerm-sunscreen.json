@@ -283,7 +283,7 @@
         }
       },
       "custom_css": [
-        ":root {--page-width-narrow: 900px; /* adjust this */}"
+        "/* Force narrow layout tighter */.container--narrow,.page-width--narrow {max-width: 900px !important;}"
       ],
       "settings": {
         "content_width": "content-center-aligned",
