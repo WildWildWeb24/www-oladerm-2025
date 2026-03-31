@@ -414,32 +414,6 @@
           },
           "blocks": {}
         },
-        "text_6QYxVb": {
-          "type": "text",
-          "name": "t:names.text",
-          "settings": {
-            "text": "<p>With over 25 years in dermatology and aesthetic medicine, Dr. Goel has treated thousands of patients across India.</p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
         "group_9cEJNw": {
           "type": "group",
           "name": "t:names.group",
@@ -907,7 +881,6 @@
       },
       "block_order": [
         "text_YMGRG7",
-        "text_6QYxVb",
         "group_9cEJNw",
         "video_NBT6MD"
       ],
@@ -946,6 +919,7 @@
         "image_L9c9Ax": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/oladerm-dr-04.jpg",
             "link": "",
             "image_ratio": "square",
             "width": "fill",
@@ -1196,6 +1170,7 @@
         "image_8GG9NU": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/oladerm-dr-03-1.jpg",
             "link": "",
             "image_ratio": "square",
             "width": "fill",
