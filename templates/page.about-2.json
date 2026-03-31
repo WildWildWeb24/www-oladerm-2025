@@ -213,8 +213,8 @@
               "type": "text",
               "settings": {
                 "text": "<p>Skincare isn’t about fixing yourself. It’s about caring for yourself.<br/><br/>At Oladerm, we believe healthy skin begins with something deeper than products — it begins with self-respect. With choosing yourself, even on busy days. With showing up for your skin the way you show up for the people you love.<br/><br/>Because when you care for your skin consistently and gently, you’re not chasing perfection. You’re practicing self-love.And that changes everything.</p>",
-                "width": "fit-content",
-                "max_width": "narrow",
+                "width": "100%",
+                "max_width": "none",
                 "alignment": "left",
                 "type_preset": "rte",
                 "font": "var(--font-body--family)",
@@ -347,7 +347,7 @@
               "settings": {
                 "text": "<p>Oladerm was created to bring skincare back to what it should be simple, honest, and rooted in real dermatological expertise.<br/><br/>Designed for Indian skin, climate, and everyday life, our products are thoughtfully formulated to support your skin barrier, balance hydration, and protect long-term skin health.<br/><br/>No exaggerated claims. No trend-chasing formulas. Just care that works and lasts.</p>",
                 "width": "fit-content",
-                "max_width": "narrow",
+                "max_width": "none",
                 "alignment": "left",
                 "type_preset": "rte",
                 "font": "var(--font-body--family)",
@@ -524,7 +524,7 @@
               "settings": {
                 "text": "<p>Our goal is simple, to make skincare feel like a ritual of care not a routine of correction. We want every individual to feel at home in their skin. To understand it. To support it. To build habits that strengthen it over time.<br/><br/>Healthy skin is not built overnight. It’s built through small, steady acts of intention. Oladerm exists to be that steady presence in your life reliable, gentle, and rooted in science.<br/><br/>Because when skincare becomes self-care, confidence follows naturally.</p>",
                 "width": "fit-content",
-                "max_width": "narrow",
+                "max_width": "none",
                 "alignment": "left",
                 "type_preset": "rte",
                 "font": "var(--font-body--family)",
